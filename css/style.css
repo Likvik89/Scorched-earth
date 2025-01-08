@@ -1,0 +1,10 @@
+#wrapper {
+	background-color: yellow;
+	width: 1024px;
+	height: 1024px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#battlefield {
+    background-color: grey;	
+}
