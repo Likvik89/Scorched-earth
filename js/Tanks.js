@@ -3,7 +3,10 @@
     
 }
 **/
-export function movement(){
+
+export {movement};
+
+function movement(){
     //Id forkert?
     var canvas = document.getElementById("battlefield");
     var context = canvas.getContext("2d");
