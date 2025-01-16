@@ -3,7 +3,7 @@
     
 }
 **/
-window.onload=function movement(){
+export function movement(){
     //Id forkert?
     var canvas = document.getElementById("battlefield");
     var context = canvas.getContext("2d");
@@ -20,7 +20,8 @@ window.onload=function movement(){
     }
 
     function animate(){
-        
+        draw(context);
+
     }
 
     // eventlistnere
@@ -48,3 +49,5 @@ window.onload=function movement(){
 		}
 	}
 };
+
+movement()

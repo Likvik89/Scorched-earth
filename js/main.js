@@ -1,3 +1,5 @@
+import {movement} from "./Tanks.js";
+
 window.onload=function() {
     var canvas = document.getElementById("battlefield");
     var context = canvas.getContext("2d");
@@ -17,5 +19,8 @@ window.onload=function() {
     context.drawImage(redbarrel, red_barrel_x, red_barrel_y);
     context.drawImage(redtank, redtank_x, redtank_y);
 
+    //KALD FUNKTIONER HER: 
+    movement();
+    
 
 }
