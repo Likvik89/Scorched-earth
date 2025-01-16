@@ -52,5 +52,3 @@ function movement(){
 		}
 	}
 };
-
-movement()

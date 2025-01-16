@@ -1,4 +1,4 @@
-import {movement} from "./Tanks.js";
+import { movement } from "./Tanks";
 
 window.onload=function() {
     var canvas = document.getElementById("battlefield");
@@ -21,6 +21,6 @@ window.onload=function() {
 
     //KALD FUNKTIONER HER: 
     movement();
-    
+
 
 }
