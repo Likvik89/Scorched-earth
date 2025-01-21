@@ -8,9 +8,11 @@ window.onload=function() {
     var tnak = new Image();
     tnak.src = "sprites/blue_tank.png";
 
-    context.drawImage(tnak, 300, 300);
+    //draw tank after it has loaded
+    tnak.onload = function(){
+        context.drawImage(tnak, 300, 300);
+    };
     
-
     console.log(context);
     
 
