@@ -1,5 +1,5 @@
 #wrapper {
-	background-color: yellow;
+	background-color: black;
 	width: 1024px;
 	height: 1024px;
 	margin-left: auto;
@@ -10,7 +10,7 @@
 }
 
 #health {
-	background-color: yellow;
+	background-color: rgb(42, 42, 42);
 	margin-left: 137px;
 	margin-top: 10px;
 }
