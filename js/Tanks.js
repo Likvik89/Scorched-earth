@@ -14,23 +14,23 @@ function movement(){
 	document.addEventListener("keyup", keyUpHandler, false);
 	// funktioner til tastatur
 	function keyDownHandler(e) {
-    if(e.keyCode == 38) {
-        upPressed = true;
-		}
-    else if(e.keyCode == 40) {
-        downPressed = true;
-		}
-	else if(e.keyCode == 32){
-		skud = true;
-		pposY = ypos + 5;
-		}
-	}
-	function keyUpHandler(e) {
-    if(e.keyCode == 38) {
-        upPressed = false;
-		}
-    else if(e.keyCode == 40) {
-        downPressed = false;
-		}
+        if(e.keyCode == 38) {
+            upPressed = true;
+            }
+        else if(e.keyCode == 40) {
+            downPressed = true;
+            }
+        else if(e.keyCode == 32){
+            skud = true;
+            pposY = ypos + 5;
+            }
+        }
+        function keyUpHandler(e) {
+        if(e.keyCode == 38) {
+            upPressed = false;
+            }
+        else if(e.keyCode == 40) {
+            downPressed = false;
+            }
 	}
 };
