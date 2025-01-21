@@ -9,7 +9,7 @@ window.onload=function() {
     BLUETANK.src = "sprites/blue_tank.png";
 
     //draw tank after it has loaded
-    tnak.onload = function(){
+    BLUETANK.onload = function(){
         //                 img      x           y
         context.drawImage(BLUETANK, BLUETANKx, BLUETANKy);
     };
