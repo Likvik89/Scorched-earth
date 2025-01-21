@@ -4,9 +4,12 @@
 }
 **/
 
-export {movement};
+
 
 function movement(){
+
+	console.log(health);
+
     //Id forkert?
     var canvas = document.getElementById("battlefield");
     var context = canvas.getContext("2d");
@@ -52,5 +55,3 @@ function movement(){
 		}
 	}
 };
-
-movement()
