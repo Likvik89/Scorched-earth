@@ -8,3 +8,9 @@
 #battlefield {
     background-color: grey;	
 }
+
+#health {
+	background-color: yellow;
+	margin-left: 137px;
+	margin-top: 10px;
+}
