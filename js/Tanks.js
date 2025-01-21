@@ -7,29 +7,8 @@
 
 
 function movement(){
-
 	console.log(health);
-
-    //Id forkert?
-    var canvas = document.getElementById("battlefield");
-    var context = canvas.getContext("2d");
-    var tank1 = new Image();
-    tank1.src = "./sprites/blue_tank.png";
-    xpos = 400;
-    ypos = 512;
-
-
-    //Tegner tank1 fra context
-    function draw(context){
-        context.drawImage(tank1, xpos,ypos);
-        context.restore();
-    }
-
-    function animate(){
-        draw(context);
-
-    }
-
+    
     // eventlistnere
 	document.addEventListener("keydown", keyDownHandler, false);
 	document.addEventListener("keyup", keyUpHandler, false);
