@@ -1,7 +1,7 @@
 
 window.onload=function() {
     
-        
+    movement();    
     var canvas = document.getElementById("battlefield");
     var context = canvas.getContext("2d");
 

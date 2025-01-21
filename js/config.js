@@ -7,3 +7,9 @@ var BLUETANKx = 300;
 var BLUETANKy = 300;
 var REDTANKx = 600;
 var REDTANKy = 600;
+
+//Movement var:
+var arrowUp = false;
+var arrowDown = false; 
+var jump = false; 
+
