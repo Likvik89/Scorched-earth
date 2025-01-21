@@ -17,11 +17,13 @@ window.onload=function() {
     function load_image() {
         loaded_images++;
         if (loaded_images >= images) {
-            start();
+            //                   img        x          y
+            context.drawImage(BLUETANK, BLUETANKx, BLUETANKy);
+            console.log(context);
         }
     }
 
-    //when the images are loaded, they 
+    //draw tank after it has loaded
     BLUETANK.onload = function(){
         load_image();
     };
@@ -29,10 +31,7 @@ window.onload=function() {
     REDTANK.onload = function(){
         load_image();
     }
-}
+    
 
-function start() {
-    //                   img        x          y
-    context.drawImage(BLUETANK, BLUETANKx, BLUETANKy);
-    context.drawImage(REDTANK, REDTANKx, REDTANKy);
+
 }
