@@ -14,13 +14,14 @@ function movement(){
 
 	// Function for handling keydown events
 	function keyDownHandler(e) {
-		if(e.keyCode == 38) { // arrowUp
-			arrowUp = true;
-			console.log("Arrow Up pressed");
+		if(e.keyCode == 68) { // Pressed: "D"
+			movementD = true;
+			BLUETANKx++;
+			console.log(BLUETANKx + "," + BLUETANKy);
 		}
-		else if(e.keyCode == 40) { // arrowDown
-			arrowDown = true;
-			console.log("Arrow Down pressed");
+		else if(e.keyCode == 65) { // Pressed "A"
+			movementA = true;
+			BLUETANKx--;
 		}
 		else if(e.keyCode == 32) { // spacebar for jump
 			jump = true;
@@ -29,12 +30,12 @@ function movement(){
 	}
 
 	function keyUpHandler(e) {
-		if(e.keyCode == 38){
-			arrowUp = false;
+		if(e.keyCode == 68){
+			movementD = false;
 		}
 
-		else if(e.keyCode == 40){
-			arrowDown = false;
+		else if(e.keyCode == 65){
+			movementA = false;
 		}
 
 		else if(e.keyCode == 32){

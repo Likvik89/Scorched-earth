@@ -9,7 +9,7 @@ var REDTANKx = 600;
 var REDTANKy = 600;
 
 //Movement var:
-var arrowUp = false;
-var arrowDown = false; 
+var movementD = false;
+var movementA = false; 
 var jump = false; 
 
