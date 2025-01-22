@@ -11,7 +11,7 @@ var REDTANKy = 400;
 var speed = 2;
 
 //Dimensioner på tanks
-var tankHeight = 180;
+var tankHeight = 45;
 var tankWidth = 50;
 
 //Dimensioner på battlefield

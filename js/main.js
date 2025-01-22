@@ -6,10 +6,8 @@ window.onload=function() {
     movement();
     //mapBorder();
     draw_map();
+    }
 }
-
-
-
 function draw(context) {
     // Draw images only when they are ready
     if (images_ready) {
@@ -24,6 +22,7 @@ function draw(context) {
         // Set images_ready to true after the first draw
         images_ready = true;
     }
+}
 function draw(context){
 
     context.drawImage(BLUETANK, 0, 0, 45, 45, BLUETANKx, BLUETANKy, 45, 45);
