@@ -1,37 +1,34 @@
 
 window.onload=function() {
+    movement();
+}
+
+function draw(context){
+    if (images_ready) {
     
-        
+    context.drawImage(BLUETANK, BLUETANKx, BLUETANKy);
+    context.drawImage(REDTANK, REDTANKx, REDTANKy);
+    context.restore();
+    }
+    else {
+        images_ready = true;
+        context.drawImage(BLUETANK, blue_start_x, blue_start_y);
+        context.drawImage(REDTANK, red_start_x, red_start_y);
+    }
+    
+}
+
+function animate(){
     var canvas = document.getElementById("battlefield");
     var context = canvas.getContext("2d");
 
-    var REDTANK = new Image();
-    REDTANK.src = "sprites/red_tank.png"
-
-    var BLUETANK = new Image();
-    BLUETANK.src = "sprites/blue_tank.png";
-
-    var loaded_images = 0;
-    var images = 2;
-
-    function load_image() {
-        loaded_images++;
-        if (loaded_images >= images) {
-            //                   img        x          y
-            context.drawImage(BLUETANK, BLUETANKx, BLUETANKy);
-            console.log(context);
-        }
+    frame++;
+    if (frame >= 4) {
+        frame = 1;
     }
 
-    //draw tank after it has loaded
-    BLUETANK.onload = function(){
-        load_image();
-    };
-
-    REDTANK.onload = function(){
-        load_image();
-    }
-    
-
+    context.clearRect(0, 0, 1000, 800);
+    draw(context);
+    setTimeout(animate,5);
 
 }
