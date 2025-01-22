@@ -13,10 +13,18 @@ var speed = 3;
 var max_distance = 65;
 var max_steps = 10;
 
-//Movement var:
+//BLUETANK Movement variable:
 var movementD = false;
 var movementA = false; 
+var movementW = false;
+var movementS = false;
 var jump = false; 
+
+//REDTANK Movement variable: 
+var movementI = false;
+var movementK = false; 
+var movementJ = false;
+var movementL = false;
 
 
 var REDTANK = new Image();
