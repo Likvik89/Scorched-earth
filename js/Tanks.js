@@ -6,63 +6,47 @@
 
 function movement() {
     console.log(health);
-
-    // Set to keep track of currently pressed keys
     const pressedKeys = new Set();
+    const movementSpeed = 5; // Set a speed value for smooth movement
 
     // Event listeners for keydown and keyup
-    document.addEventListener("keydown", keyDownHandler, false);
-    document.addEventListener("keyup", keyUpHandler, false);
+    document.addEventListener("keydown", (e) => pressedKeys.add(e.keyCode), false);
+    document.addEventListener("keyup", (e) => pressedKeys.delete(e.keyCode), false);
 
-    // Function for handling keydown events
-    function keyDownHandler(e) {
-        pressedKeys.add(e.keyCode); // Add the pressed key to the set
-
+    // Function to update tank positions based on pressed keys
+    function updateMovement() {
         // BLUETANK x,y movement
         if (pressedKeys.has(87)) { // W
-            BLUETANKy -= speed;
+            BLUETANKy -= movementSpeed;
         }
         if (pressedKeys.has(83)) { // S
-            BLUETANKy += speed;
+            BLUETANKy += movementSpeed;
         }
         if (pressedKeys.has(68)) { // D
-            BLUETANKx += speed;
+            BLUETANKx += movementSpeed;
         }
         if (pressedKeys.has(65)) { // A
-            BLUETANKx -= speed;
-        }
-        if (pressedKeys.has(32)) { // Spacebar
-            jump = true;
+            BLUETANKx -= movementSpeed;
         }
 
         // REDTANK x,y movement
         if (pressedKeys.has(73)) { // I
-            REDTANKy -= speed;
+            REDTANKy -= movementSpeed;
         }
         if (pressedKeys.has(75)) { // K
-            REDTANKy += speed;
+            REDTANKy += movementSpeed;
         }
         if (pressedKeys.has(74)) { // J
-            REDTANKx -= speed;
+            REDTANKx -= movementSpeed;
         }
         if (pressedKeys.has(76)) { // L
-            REDTANKx += speed;
+            REDTANKx += movementSpeed;
         }
 
-        // Debugging: Log pressed keys
-        console.log("Keys currently pressed:", Array.from(pressedKeys));
+        // Call the update function again
+        requestAnimationFrame(updateMovement);
     }
 
-    // Function for handling keyup events
-    function keyUpHandler(e) {
-        pressedKeys.delete(e.keyCode); // Remove the released key from the set
-
-        // Reset specific actions
-        if (e.keyCode === 32) { // Spacebar
-            jump = false;
-        }
-
-        // Debugging: Log released key
-        console.log("Key released:", e.keyCode);
-    }
+    // Start the continuous update loop
+    updateMovement();
 }
