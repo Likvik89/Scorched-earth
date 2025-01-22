@@ -7,7 +7,7 @@
 function movement() {
     console.log(health);
     const pressedKeys = new Set();
-    const movementSpeed = 5; // Set a speed value for smooth movement
+    const movementSpeed = speed; // Set a speed value for smooth movement
 
     // Event listeners for keydown and keyup
     document.addEventListener("keydown", (e) => pressedKeys.add(e.keyCode), false);

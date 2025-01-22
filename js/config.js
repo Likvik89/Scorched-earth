@@ -8,7 +8,7 @@ var BLUETANKx = 300;
 var BLUETANKy = 300;
 var REDTANKx = 600;
 var REDTANKy = 600;
-var speed = 3;
+var speed = 2;
 
 var blue_start_x = 0;
 var blue_start_y = -90;
