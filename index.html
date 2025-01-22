@@ -2,20 +2,119 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Scorched earth</title>
+    <title>Scorched Earth</title>
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <script type="text/javascript" src="js/config.js"></script>
     <script type="text/javascript" src="js/map.js"></script>
     <script type="text/javascript" src="js/weapons.js"></script>
     <script type="text/javascript" src="js/Tanks.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
-
 </head>
 <body>
-    <div id="wrapper">
-        <canvas id="battlefield" width="1024" height="800"></canvas>
-        <canvas id="health" width="1000" height="200"></canvas>
-        <script type="text/javascript" src="js/healthbar.js"></script>
+    <div id="wrapper" style="position: relative; overflow: hidden;">
+        <canvas id="battlefield" style="display: block;"></canvas>
+        <canvas id="health" width="1000" height="200" style="display: block;"></canvas>
     </div>
+
+    <!-- Fullscreen Button -->
+    <img id="fullscreenButton" src="Images/full-screen.png" alt="Fullscreen Button" width="50" height="50"
+    style="position: absolute; top: 15px; right: 325px; cursor: pointer; z-index: 10;"/>
+
+    <script>
+        // Define global variables for battlefield dimensions
+        let battlefieldWidth = 1024;  // Initial width of battlefield
+        let battlefieldHeight = 800;  // Initial height of battlefield
+
+        // Get canvas references
+        const battlefield = document.getElementById('battlefield');
+        const healthCanvas = document.getElementById('health');
+        const healthCtx = healthCanvas.getContext('2d');
+
+        // Set initial canvas dimensions using global variables
+        battlefield.width = battlefieldWidth;
+        battlefield.height = battlefieldHeight;
+
+        // Fullscreen Button and Wrapper Reference
+        const fullscreenButton = document.getElementById('fullscreenButton');
+        const wrapper = document.getElementById('wrapper');
+
+        // Function to resize canvas
+        function resizeCanvas() {
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+
+            // Update global variables for dimensions
+            battlefieldWidth = screenWidth;
+            battlefieldHeight = screenHeight * 0.8;
+
+            // Adjust battlefield canvas size
+            battlefield.width = battlefieldWidth;
+            battlefield.height = battlefieldHeight;
+
+            // Adjust health canvas size
+            healthCanvas.width = screenWidth;
+            healthCanvas.height = screenHeight * 0.2;
+
+            // Redraw health bar contents
+            drawHealthBar();
+        }
+
+        // Function to redraw the health canvas
+        function drawHealthBar() {
+            // Clear the health canvas before drawing
+            healthCtx.clearRect(0, 0, healthCanvas.width, healthCanvas.height);
+
+            // Example health bar rendering: replace with actual logic
+            healthCtx.fillStyle = 'green';
+            healthCtx.fillRect(10, 10, healthCanvas.width - 20, healthCanvas.height - 20);
+
+            // Optionally, you can add text or other visual elements to the health bar
+            healthCtx.fillStyle = 'white';
+            healthCtx.font = '20px Arial';
+            healthCtx.fillText("Health", 20, 30);
+        }
+
+        // Function to request fullscreen
+        function goFullscreen() {
+            if (wrapper.requestFullscreen) {
+                wrapper.requestFullscreen().then(resizeCanvas).catch(err => {
+                    console.error("Error attempting to enable fullscreen:", err.message);
+                });
+            } else if (wrapper.webkitRequestFullscreen) { // Safari
+                wrapper.webkitRequestFullscreen();
+                resizeCanvas();
+            } else if (wrapper.msRequestFullscreen) { // IE11
+                wrapper.msRequestFullscreen();
+                resizeCanvas();
+            } else {
+                console.warn("Fullscreen API is not supported by this browser.");
+            }
+        }
+
+        // Event Listener for Fullscreen Button
+        fullscreenButton.addEventListener('click', goFullscreen);
+
+        // Handle fullscreen state changes
+        document.addEventListener('fullscreenchange', () => {
+            if (document.fullscreenElement) {
+                resizeCanvas(); // Adjust canvas size in fullscreen mode
+            } else {
+                // Reset canvas size when exiting fullscreen
+                battlefield.width = 1024;
+                battlefield.height = 800;
+                healthCanvas.width = 1000;
+                healthCanvas.height = 200;
+
+                // Redraw health bar contents
+                drawHealthBar();
+            }
+        });
+
+        // Initial health bar rendering
+        drawHealthBar(); // Call to draw health bar after page loads
+    </script>
+
+    <!-- Load healthbar.js AFTER the healthCanvas is defined -->
+    <script type="text/javascript" src="js/healthbar.js"></script>
 </body>
 </html>

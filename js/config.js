@@ -10,6 +10,12 @@ var REDTANKx = 600;
 var REDTANKy = 600;
 var speed = 2;
 
+//Dimensioner på tanks
+var tankHeight = 180;
+var tankWidth = 50;
+
+//Dimensioner på battlefield
+
 var blue_start_x = 0;
 var blue_start_y = -90;
 var red_start_x = 90;
