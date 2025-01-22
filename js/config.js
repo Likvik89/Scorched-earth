@@ -10,10 +10,10 @@ var REDTANKx = 600;
 var REDTANKy = 600;
 var speed = 2;
 
-var blue_start_x = 0;
-var blue_start_y = -90;
-var red_start_x = 90;
-var red_start_y = -90;
+var blue_start_x = 9990;
+var blue_start_y = -99990;
+var red_start_x = -90;
+var red_start_y = 0;
 var images_ready = false;
 
 //vi skal endten bruge max_distance eller max_steps når vi afgør hvor langt man kan bevæge sig på en tur
@@ -36,9 +36,11 @@ var movementL = false;
 
 var REDTANK = new Image();
 REDTANK.src = "sprites/red_tank.png"
+//REDTANK.crossOrigin = "Anonymous";
 
 var BLUETANK = new Image();
 BLUETANK.src = "sprites/blue_tank.png";
+//BLUETANK.crossOrigin = "Anonymous";
 
 
 var loaded_images = 0;

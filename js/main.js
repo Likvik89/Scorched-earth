@@ -5,12 +5,16 @@ window.onload=function() {
 }
 
 function draw(context){
+    var canvas = document.getElementById("battlefield");
+
     if (images_ready) {
-    
-    context.drawImage(BLUETANK, BLUETANKx, BLUETANKy);
-    context.drawImage(REDTANK, REDTANKx, REDTANKy);
-    context.restore();
+
+        context.drawImage(BLUETANK, 0, 0, 45, 45, BLUETANKx, BLUETANKy, 45, 45);
+        context.drawImage(REDTANK, 0, frame*45, 45, 45, REDTANKx, REDTANKy, 45, 45);
+
+        context.restore();
     }
+
     else {
         images_ready = true;
         context.drawImage(BLUETANK, blue_start_x, blue_start_y);
@@ -28,7 +32,7 @@ function animate(){
         frame = 1;
     }
 
-    context.clearRect(0, 0, 1000, 800);
+    context.clearRect(0, 0, 1024, 800);
     draw(context);
     setTimeout(animate,5);
 
