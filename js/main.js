@@ -1,7 +1,14 @@
 window.onload = function() {
     animate(); // Start animation loop
     mapBorder(); // Assuming this function is doing something related to the map
+
+window.onload=function() {
+    movement();
+    //mapBorder();
+    draw_map();
 }
+
+
 
 function draw(context) {
     // Draw images only when they are ready
@@ -17,6 +24,12 @@ function draw(context) {
         // Set images_ready to true after the first draw
         images_ready = true;
     }
+function draw(context){
+
+    context.drawImage(BLUETANK, 0, 0, 45, 45, BLUETANKx, BLUETANKy, 45, 45);
+    context.drawImage(REDTANK, 0, frame*45, 45, 45, REDTANKx, REDTANKy, 45, 45);
+    context.restore();
+    
 }
 
 var frame = 1;
