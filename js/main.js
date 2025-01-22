@@ -1,30 +1,6 @@
 
 window.onload=function() {
-    
-    movement();    
-
-    var loaded_images = 0;
-    var images = 2;
-
-    function load_image() {
-        loaded_images++;
-
-        if (loaded_images == images) {
-            animate();
-            console.log(animate);
-        }
-    }
-
-    //draw tank after it has loaded
-    BLUETANK.onload = function(){
-        load_image();
-        console.log("bluetank loaded");
-    };
-
-    REDTANK.onload = function(){
-        load_image();
-        console.log("redtank loaded");
-    }
+    movement();
 }
 
 function draw(context){
@@ -41,8 +17,5 @@ function animate(){
     context.clearRect(0, 0, 1000, 800);
     draw(context);
     setTimeout(animate,5);
-
-
-    console.log(context);
 
 }
