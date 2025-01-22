@@ -16,12 +16,12 @@ function movement(){
 	function keyDownHandler(e) {
 		if(e.keyCode == 68) { // Pressed: "D"
 			movementD = true;
-			BLUETANKx++;
+			BLUETANKx += speed;
 			console.log(BLUETANKx + "," + BLUETANKy);
 		}
 		else if(e.keyCode == 65) { // Pressed "A"
 			movementA = true;
-			BLUETANKx--;
+			BLUETANKx -= speed;
 		}
 		else if(e.keyCode == 32) { // spacebar for jump
 			jump = true;

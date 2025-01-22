@@ -7,6 +7,11 @@ var BLUETANKx = 300;
 var BLUETANKy = 300;
 var REDTANKx = 600;
 var REDTANKy = 600;
+var speed = 3;
+
+//vi skal endten bruge max_distance eller max_steps når vi afgør hvor langt man kan bevæge sig på en tur
+var max_distance = 65;
+var max_steps = 10;
 
 //Movement var:
 var movementD = false;
@@ -29,7 +34,6 @@ function load_image() {
 
     if (loaded_images == images) {
         animate();
-        console.log(animate);
     }
 }
 
