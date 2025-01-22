@@ -4,103 +4,65 @@
 }
 **/
 
+function movement() {
+    console.log(health);
 
-function movement(){
-	console.log(health);
+    // Set to keep track of currently pressed keys
+    const pressedKeys = new Set();
 
     // Event listeners for keydown and keyup
-	document.addEventListener("keydown", keyDownHandler, false);
-	document.addEventListener("keyup", keyUpHandler, false);
+    document.addEventListener("keydown", keyDownHandler, false);
+    document.addEventListener("keyup", keyUpHandler, false);
 
-	// Function for handling keydown events
-	function keyDownHandler(e) {
+    // Function for handling keydown events
+    function keyDownHandler(e) {
+        pressedKeys.add(e.keyCode); // Add the pressed key to the set
 
-		// BLUETANK x,y movement
-		if(e.keyCode == 87) { //W
-			movementW = true;
-			BLUETANKy -= speed; 
-		}
+        // BLUETANK x,y movement
+        if (pressedKeys.has(87)) { // W
+            BLUETANKy -= speed;
+        }
+        if (pressedKeys.has(83)) { // S
+            BLUETANKy += speed;
+        }
+        if (pressedKeys.has(68)) { // D
+            BLUETANKx += speed;
+        }
+        if (pressedKeys.has(65)) { // A
+            BLUETANKx -= speed;
+        }
+        if (pressedKeys.has(32)) { // Spacebar
+            jump = true;
+        }
 
-		else if(e.keyCode == 83) { //S
-			movementS = true;
-			BLUETANKy += speed;
-		}
+        // REDTANK x,y movement
+        if (pressedKeys.has(73)) { // I
+            REDTANKy -= speed;
+        }
+        if (pressedKeys.has(75)) { // K
+            REDTANKy += speed;
+        }
+        if (pressedKeys.has(74)) { // J
+            REDTANKx -= speed;
+        }
+        if (pressedKeys.has(76)) { // L
+            REDTANKx += speed;
+        }
 
-		else if(e.keyCode == 68) { // Pressed: "D"
-			movementD = true;
-			BLUETANKx += speed;
-		}
-		else if(e.keyCode == 65) { // Pressed "A"
-			movementA = true;
-			BLUETANKx -= speed;
-		}
-		else if(e.keyCode == 32) { // spacebar 
-			jump = true;
-		}
+        // Debugging: Log pressed keys
+        console.log("Keys currently pressed:", Array.from(pressedKeys));
+    }
 
-		// REDTANK x,y movement
-		else if(e.keyCode == 73){ //I
-			movementI = true;
-			REDTANKy -= speed;
-		}
+    // Function for handling keyup events
+    function keyUpHandler(e) {
+        pressedKeys.delete(e.keyCode); // Remove the released key from the set
 
-		else if(e.keyCode == 75){ //K
-			movementK = true;
-			REDTANKy += speed;
-		}
+        // Reset specific actions
+        if (e.keyCode === 32) { // Spacebar
+            jump = false;
+        }
 
-		else if(e.keyCode == 74){ //J
-			movementJ = true;
-			REDTANKx -= speed;
-		}
-
-		else if(e.keyCode == 76){ //L
-			movementL = true;
-			REDTANKx += speed;
-		}
-		
-	}
-
-	function keyUpHandler(e) {
-
-		//BLUETANK x,y 
-		if(e.keyCode == 87){ //W
-			movementW = false;
-		}
-
-		else if(e.keyCode == 83){ //S
-			movementS = false;
-		}
-
-		else if(e.keyCode == 68){ //D
-			movementD = false;
-		}
-
-		else if(e.keyCode == 65){//A
-			movementA = false;
-		}
-
-		else if(e.keyCode == 32){//Spacebar
-			jump = false;
-		}
-
-		//REDTANK x,y
-		else if(e.keyCode == 73){ //I
-			movementI = false;
-		}
-
-		else if(e.keyCode == 75){ //K
-			movementK = false;
-		}
-
-		else if(e.keyCode == 74){ //J
-			movementJ = false;
-		}
-
-		else if(e.keyCode == 76){ //L
-			movementL = false;
-		}
-
-	}
-
-};
+        // Debugging: Log released key
+        console.log("Key released:", e.keyCode);
+    }
+}

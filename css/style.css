@@ -11,6 +11,11 @@
 
 #health {
 	background-color: rgb(42, 42, 42);
-	margin-left: 137px;
+	margin-left: 10px;
 	margin-top: 10px;
+}
+
+button {
+	margin-top: 50px;
+
 }

@@ -3,11 +3,18 @@
 var health = 999;
 var time = 0;
 var time_increase = 1;
+var frame = 1;
 var BLUETANKx = 300;
 var BLUETANKy = 300;
 var REDTANKx = 600;
 var REDTANKy = 600;
 var speed = 3;
+
+var blue_start_x = 0;
+var blue_start_y = -90;
+var red_start_x = 90;
+var red_start_y = -90;
+var images_ready = false;
 
 //vi skal endten bruge max_distance eller max_steps når vi afgør hvor langt man kan bevæge sig på en tur
 var max_distance = 65;
