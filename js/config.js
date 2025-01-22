@@ -1,15 +1,14 @@
 //her har vi alle vores globale variabler
 
 var health = 999;
-var time = 0;
-var time_increase = 1;
+var drawing = false;
 var frame = 1;
+
 var BLUETANKx = 300;
 var BLUETANKy = 300;
-var REDTANKx = 600;
-var REDTANKy = 600;
+var REDTANKx = 400;
+var REDTANKy = 400;
 var speed = 2;
-
 
 //vi skal endten bruge max_distance eller max_steps når vi afgør hvor langt man kan bevæge sig på en tur
 var max_distance = 65;

@@ -2,6 +2,7 @@
 window.onload=function() {
     movement();
     mapBorder();
+    draw_map();
 }
 
 
@@ -10,7 +11,6 @@ function draw(context){
 
     context.drawImage(BLUETANK, 0, 0, 45, 45, BLUETANKx, BLUETANKy, 45, 45);
     context.drawImage(REDTANK, 0, frame*45, 45, 45, REDTANKx, REDTANKy, 45, 45);
-
     context.restore();
     
 }
