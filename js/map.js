@@ -28,9 +28,8 @@ function draw_map() {
 
         // If the mouse button is down, log that it's being dragged
         if (isMouseDown) {
-            ctx.beginPath();
-            ctx.rect(20, 20, 150, 100);
-            ctx.stroke();
+            
+            ctx.fillRect(mouseX-10, mouseY-10, 20, 20); 
             
             console.log("Mouse is being dragged at X: " + mouseX + ", Y: " + mouseY);
         }
@@ -40,9 +39,10 @@ function draw_map() {
 
 
 
-
+/*
 function mapBorder(){
     if(BLUETANKy == 0){
         BLUETANKy++;
     }
 }
+*/

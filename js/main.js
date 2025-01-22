@@ -1,7 +1,7 @@
 
 window.onload=function() {
     movement();
-    mapBorder();
+    //mapBorder();
     draw_map();
 }
 
@@ -24,7 +24,14 @@ function animate(){
         frame = 1;
     }
 
-    context.clearRect(0, 0, 1024, 800);
+    if (!drawing){
+        context.clearRect(0, 0, 1024, 800);
+    }
+    else {
+        context.clearRect(BLUETANKx, BLUETANKy, 45, 45);
+        context.clearRect(REDTANKx, REDTANKy, 45, 45);
+    }
+
     draw(context);
     setTimeout(animate,5);
 
