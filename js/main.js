@@ -2,14 +2,8 @@
 window.onload=function() {
     
     movement();    
-    var canvas = document.getElementById("battlefield");
-    var context = canvas.getContext("2d");
 
-    var REDTANK = new Image();
-    REDTANK.src = "sprites/red_tank.png"
 
-    var BLUETANK = new Image();
-    BLUETANK.src = "sprites/blue_tank.png";
 
     var loaded_images = 0;
     var images = 2;
@@ -17,9 +11,8 @@ window.onload=function() {
     function load_image() {
         loaded_images++;
         if (loaded_images >= images) {
-            //                   img        x          y
-            context.drawImage(BLUETANK, BLUETANKx, BLUETANKy);
-            console.log(context);
+            animate();
+
         }
     }
 
@@ -31,7 +24,23 @@ window.onload=function() {
     REDTANK.onload = function(){
         load_image();
     }
-    
+}
 
+function start(){
+
+    //game_loop()
+}
+
+function animate(){
+    var canvas = document.getElementById("battlefield");
+    var context = canvas.getContext("2d");
+    //                   img        x          y
+    context.drawImage(BLUETANK, BLUETANKx, BLUETANKy);
+    console.log(context);
 
 }
+/*
+function game_loop() {
+
+}
+*/

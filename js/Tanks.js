@@ -27,6 +27,7 @@ function movement(){
 			jump = true;
 			console.log("Spacebar pressed");
 		}
+		animate();
 	}
 
 	function keyUpHandler(e) {

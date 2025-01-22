@@ -13,3 +13,10 @@ var movementD = false;
 var movementA = false; 
 var jump = false; 
 
+
+var REDTANK = new Image();
+REDTANK.src = "sprites/red_tank.png"
+
+var BLUETANK = new Image();
+BLUETANK.src = "sprites/blue_tank.png";
+
