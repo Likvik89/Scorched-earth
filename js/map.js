@@ -16,18 +16,36 @@ function draw_map() {
     // When the mouse button is released
     document.addEventListener("mouseup", function(event) {
         isMouseDown = false;
+        aiming = false;
         //console.log("Mouse button is released.");
     });
 
     // Track the mouse movement
     document.addEventListener("mousemove", function(event) {
-        var mouseX = event.offsetX;
-        var mouseY = event.offsetY;
+        mouseX = event.offsetX;
+        mouseY = event.offsetY;
 
-        //console.log("Mouse X: " + mouseX + ", Mouse Y: " + mouseY);
+        if (aiming) {
+            aimingpointx = mouseX;
+            aimingpointy = mouseY;
+            console.log(aimingpointx, aimingpointy);
+        }
+
 
         // If the mouse button is down, log that it's being dragged
         if (isMouseDown) {
+
+            if (turn === 1) {            
+                if (mouseX >= BLUETANKx && mouseX <= BLUETANKx+tankWidth) {
+                    if (mouseY >= BLUETANKy && mouseY <= BLUETANKy+tankHeight) {
+
+                        aiming = true;
+                    }
+                }
+            }
+            if (turn ===2) {
+
+            }
 
             if (drawing) {
             ctx.fillStyle = "brown";

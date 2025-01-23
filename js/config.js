@@ -4,6 +4,12 @@
 var drawing = false;
 var frame = 0;
 var turn = 1;
+var mouseX = 0;
+var mouseY = 0;
+var aimingpointx = 0;
+var aimingpointy = 0;
+var aiming = false;
+var shooting = false;
 
 //movement variables
 var max_steps = 105;
