@@ -1,8 +1,8 @@
 //her har vi alle vores globale variabler
 
 var health = 999;
-var drawing = false;
-var frame = 1;
+var drawing = true;
+var frame = 0;
 
 var BLUETANKx = 300;
 var BLUETANKy = 300;
@@ -15,12 +15,13 @@ var tankHeight = 45;
 var tankWidth = 50;
 
 //Dimensioner på battlefield
-
+/*
 var blue_start_x = 0;
 var blue_start_y = -90;
 var red_start_x = 90;
 var red_start_y = -90;
 var images_ready = false;
+*/
 
 //vi skal endten bruge max_distance eller max_steps når vi afgør hvor langt man kan bevæge sig på en tur
 var max_distance = 65;

@@ -1,27 +1,16 @@
-window.onload = function() {
-    animate(); // Start animation loop
-    mapBorder(); // Assuming this function is doing something related to the map
 
 window.onload=function() {
-    movement();
+    //movement();
     //mapBorder();
     draw_map();
     }
-}
-function draw(context) {
-    // Draw images only when they are ready
-    if (images_ready) {
-        // Draw the images at their current positions
-        context.drawImage(BLUETANK, BLUETANKx, BLUETANKy);
-        context.drawImage(REDTANK, REDTANKx, REDTANKy);
-    } else {
-        // If images aren't ready, initialize them at their starting positions
-        context.drawImage(BLUETANK, blue_start_x, blue_start_y);
-        context.drawImage(REDTANK, red_start_x, red_start_y);
 
-        // Set images_ready to true after the first draw
-        images_ready = true;
-    }
+function draw(context) {
+    
+    context.drawImage(BLUETANK, BLUETANKx, BLUETANKy);
+    context.drawImage(REDTANK, REDTANKx, REDTANKy);
+    context.restore();
+
 }
 function draw(context){
 
@@ -31,9 +20,14 @@ function draw(context){
     
 }
 
-var frame = 1;
 
 function animate() {
+    frame+=1;
+
+    if (frame>3) {
+        frame = 0;
+    }
+
     var canvas = document.getElementById("battlefield");
 
     if (!canvas) {
@@ -44,7 +38,13 @@ function animate() {
     var context = canvas.getContext("2d");
 
     // Clear the canvas at the start of each frame
-    context.clearRect(0, 0, canvas.width, canvas.height);
+    if (drawing) {
+        context.clearRect(BLUETANKx, BLUETANKy, tankWidth, tankHeight);
+        context.clearRect(REDTANKx,REDTANKy, tankWidth, tankHeight);
+    }
+    else {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+    }
 
     // Update tank movement and draw them
     updateMovement();  // Update tank movement
@@ -52,9 +52,6 @@ function animate() {
 
     // Call animate recursively using requestAnimationFrame for smooth looping
     requestAnimationFrame(animate);
+    
+    console.log(drawing);
 }
-
-// Start the animation loop after the DOM is fully loaded
-window.onload = function () {
-    animate();
-};
