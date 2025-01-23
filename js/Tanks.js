@@ -1,5 +1,4 @@
 let pressedKeys = new Set();
-let movementSpeed = speed; // Set a speed value for smooth movement
 
 // Event listeners for keydown and keyup
 document.addEventListener("keydown", (e) => {
@@ -11,20 +10,55 @@ document.addEventListener("keyup", (e) => {
 }, false);
 
 function updateMovement() {
-    // BLUETANK movement
+    // Tank movement
     if (pressedKeys.has(87) && BLUETANKy > 0) { // W
-        BLUETANKy -= movementSpeed;
-    }
-    if (pressedKeys.has(83) && BLUETANKy < battlefieldHeight - tankHeight) { // S
-        BLUETANKy += movementSpeed;
-    }
-    if (pressedKeys.has(68) && BLUETANKx < battlefieldWidth - tankWidth) { // D
-        BLUETANKx += movementSpeed;
-    }
-    if (pressedKeys.has(65) && BLUETANKx > 0) { // A
-        BLUETANKx -= movementSpeed;
+        
+        //Tjekker turen, og flytter den tilsavrende tank
+        if (turn === 1 && blue_current_steps < max_steps){
+            BLUETANKy -= movementSpeed;
+            blue_current_steps++;
+        }
+        if (turn === 2 && red_current_steps < max_steps){
+            REDTANKy -= movementSpeed;
+            red_current_steps++;
+        }
     }
 
+    if (pressedKeys.has(83) && BLUETANKy < battlefieldHeight - tankHeight) { // S
+        
+        if (turn === 1 && blue_current_steps < max_steps) {
+            BLUETANKy += movementSpeed;
+            blue_current_steps++;
+        }
+        if (turn === 2 && red_current_steps < max_steps) {
+            REDTANKy += movementSpeed;
+            red_current_steps++;
+        }
+    }
+
+    if (pressedKeys.has(68) && BLUETANKx < battlefieldWidth - tankWidth) { // D
+        if (turn === 1 && blue_current_steps < max_steps) {
+            BLUETANKx += movementSpeed;
+            blue_current_steps++;
+        }
+        if (turn === 2 && red_current_steps < max_steps) {
+            REDTANKx += movementSpeed;
+            red_current_steps++;
+        }
+    }
+
+    if (pressedKeys.has(65) && BLUETANKx > 0) { // A
+        if (turn === 1 && blue_current_steps < max_steps){
+            BLUETANKx -= movementSpeed;
+            blue_current_steps++;
+        }
+        if (turn === 2 && red_current_steps < max_steps){
+            REDTANKx -= movementSpeed;
+            red_current_steps++;
+        }
+    }
+
+/*
     // REDTANK movement
     if (pressedKeys.has(73) && REDTANKy > 0) { // I
         REDTANKy -= movementSpeed;
@@ -38,4 +72,5 @@ function updateMovement() {
     if (pressedKeys.has(74) && REDTANKx > 0) { // J
         REDTANKx -= movementSpeed;
     }
+*/
 }

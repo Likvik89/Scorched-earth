@@ -2,7 +2,7 @@
 function draw_map() {
     const ctx = document.getElementById("battlefield").getContext("2d");
 
-    drawing = true;
+    //drawing = true;
 
     // Track the state of the mouse button (whether it is held down or not)
     let isMouseDown = false;
@@ -33,18 +33,9 @@ function draw_map() {
             ctx.fillStyle = "brown";
             ctx.fillRect(mouseX-10, mouseY-10, 20, 20); 
             }
-            console.log("Mouse is being dragged at X: " + mouseX + ", Y: " + mouseY);
+            //console.log("Mouse is being dragged at X: " + mouseX + ", Y: " + mouseY);
         }
     });
 
 }
 
-
-
-/*
-function mapBorder(){
-    if(BLUETANKy == 0){
-        BLUETANKy++;
-    }
-}
-*/

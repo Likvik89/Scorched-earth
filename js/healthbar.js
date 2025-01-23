@@ -1,6 +1,5 @@
 var ctx = healthCanvas.getContext("2d");  // Use the context of the already defined healthCanvas
-var health_red = 195;
-var health_blue = 195;
+
 var healthbar = new Image();
 healthbar.src = "./sprites/healthbar.png";
 var flightbar = new Image();

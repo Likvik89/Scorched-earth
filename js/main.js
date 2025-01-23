@@ -5,13 +5,6 @@ window.onload=function() {
     draw_map();
     }
 
-function draw(context) {
-    
-    context.drawImage(BLUETANK, BLUETANKx, BLUETANKy);
-    context.drawImage(REDTANK, REDTANKx, REDTANKy);
-    context.restore();
-
-}
 function draw(context){
 
     context.drawImage(BLUETANK, 0, 0, 45, 45, BLUETANKx, BLUETANKy, 45, 45);
@@ -19,7 +12,6 @@ function draw(context){
     context.restore();
     
 }
-
 
 function animate() {
     frame+=1;
@@ -52,6 +44,21 @@ function animate() {
 
     // Call animate recursively using requestAnimationFrame for smooth looping
     requestAnimationFrame(animate);
+}
+
+function endturn(){
+    turn++;
     
-    console.log(drawing);
+    
+    if (turn > 2){
+        turn = 1;
+        blue_current_steps = 0;
+        
+    }
+    else {
+        red_current_steps = 0;
+    }
+
+
+    console.log(turn);
 }
