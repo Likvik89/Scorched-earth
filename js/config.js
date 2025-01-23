@@ -8,14 +8,14 @@ var turn = 1;
 //movement variables
 var max_steps = 105;
 var blue_current_steps = 0;
-var red_current_steps = 0;
+var red_current_steps = 105;
 
 //health
 var health_red = 195;
 var health_blue = 195;
 
 //super meters
-var maxmeter = 100;
+var maxmeter = 102;
 var bluemeter = 0;
 var redmeter = 0;
 

@@ -52,11 +52,19 @@ function endturn(){
     
     
     if (turn > 2){
+        redmeter += (max_steps-red_current_steps)/2
+        if (redmeter>maxmeter){
+            redmeter=102
+        }
         turn = 1;
         blue_current_steps = 0;
         
     }
     else {
+        bluemeter += (max_steps-blue_current_steps)/2
+        if (bluemeter>maxmeter){
+            bluemeter=102
+        }
         red_current_steps = 0;
     }
 

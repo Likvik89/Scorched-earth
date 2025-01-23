@@ -33,9 +33,11 @@ function drawHealthBar() {
     ctx.fillStyle = 'rgb(132, 150, 251)';
     ctx.fillRect(35 * scaleX, 145 * scaleY, 15 * scaleX, -(max_steps-red_current_steps * scaleY));
     ctx.fillStyle = 'rgb(249, 156, 255)';
-    ctx.fillRect(209 * scaleX, 130 * scaleY, 102 * scaleX, 18 * scaleY);
+    ctx.fillRect(209 * scaleX, 130 * scaleY, redmeter * scaleX, 18 * scaleY);
     ctx.fillStyle = 'rgb(249, 156, 255)';
-    ctx.fillRect(714 * scaleX, 130 * scaleY, 102 * scaleX, 18 * scaleY);
+    ctx.fillRect(714 * scaleX, 130 * scaleY, bluemeter * scaleX, 18 * scaleY);
+
+
 }
 
 // Ensure images are loaded before drawing
