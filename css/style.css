@@ -1,7 +1,7 @@
 #wrapper {
 	background-color: black;
 	width: 1024px;
-	height: 1150px;
+	height: 1050px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -16,8 +16,9 @@
 }
 
 button {
-	margin-top: 7px;
+	margin-top: -150px;
 	margin-left: 406px;
 	margin-right: auto;
 	background-color: rgb(42, 42, 42);
+	z-index: 2;
 }
