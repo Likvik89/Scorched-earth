@@ -7,17 +7,17 @@ window.onload=function() {
 
 function draw(context){
 
-    context.drawImage(BLUETANK, 0, 0, 45, 45, BLUETANKx, BLUETANKy, 45, 45);
-    context.drawImage(REDTANK, 0, frame*45, 45, 45, REDTANKx, REDTANKy, 45, 45);
+    context.drawImage(BLUETANK, 0, (Math.floor(frame))*45, 45, 45, BLUETANKx, BLUETANKy, 45, 45);
+    context.drawImage(REDTANK, 0, (Math.floor(frame))*45, 45, 45, REDTANKx, REDTANKy, 45, 45);
     context.restore();
     
 }
 
 function animate() {
     drawHealthBar();
-    frame+=1;
+    frame+=0.2;
 
-    if (frame>3) {
+    if (frame>4) {
         frame = 0;
     }
 
