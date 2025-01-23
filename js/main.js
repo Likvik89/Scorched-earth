@@ -14,6 +14,7 @@ function draw(context){
 }
 
 function animate() {
+    drawHealthBar();
     frame+=1;
 
     if (frame>3) {

@@ -6,7 +6,7 @@ var frame = 0;
 var turn = 1;
 
 //movement variables
-var max_steps = 100;
+var max_steps = 105;
 var blue_current_steps = 0;
 var red_current_steps = 0;
 

@@ -1,5 +1,7 @@
 var ctx = healthCanvas.getContext("2d");  // Use the context of the already defined healthCanvas
 
+
+
 var healthbar = new Image();
 healthbar.src = "./sprites/healthbar.png";
 var flightbar = new Image();
@@ -27,9 +29,9 @@ function drawHealthBar() {
     ctx.fillStyle = 'rgb(0, 150, 255)';
     ctx.fillRect(667 * scaleX, 40 * scaleY, health_blue * scaleX, 25 * scaleY);
     ctx.fillStyle = 'rgb(132, 150, 251)';
-    ctx.fillRect(950 * scaleX, 40 * scaleY, 15 * scaleX, 105 * scaleY);
+    ctx.fillRect(950 * scaleX, 145 * scaleY, 15 * scaleX, -(max_steps-blue_current_steps * scaleY));
     ctx.fillStyle = 'rgb(132, 150, 251)';
-    ctx.fillRect(35 * scaleX, 40 * scaleY, 15 * scaleX, 105 * scaleY);
+    ctx.fillRect(35 * scaleX, 145 * scaleY, 15 * scaleX, -(max_steps-red_current_steps * scaleY));
     ctx.fillStyle = 'rgb(249, 156, 255)';
     ctx.fillRect(209 * scaleX, 130 * scaleY, 102 * scaleX, 18 * scaleY);
     ctx.fillStyle = 'rgb(249, 156, 255)';
