@@ -37,6 +37,14 @@ function drawHealthBar() {
     ctx.fillStyle = 'rgb(249, 156, 255)';
     ctx.fillRect(714 * scaleX, 130 * scaleY, bluemeter * scaleX, 18 * scaleY);
 
+    if(bluemeter>101){
+        ctx.fillStyle = 'rgb(240, 223, 125)';
+        ctx.fillRect(759 * scaleX, 119 * scaleY, 12 * scaleX, 6 * scaleY);
+    }
+    if(redmeter>101){
+        ctx.fillStyle = 'rgb(240, 223, 125)';
+        ctx.fillRect(254 * scaleX, 119 * scaleY, 12 * scaleX, 6 * scaleY);
+    }
 
 }
 
