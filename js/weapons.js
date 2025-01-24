@@ -3,6 +3,8 @@ var bullet = new Image();
 bullet.src = "sprites/cannon_ball.png";
 
 function calc_a(){
+    console.log("calculating a");
+
     var a;
     var x = 0;
     var y = 0;
@@ -22,12 +24,14 @@ function calc_a(){
 
     var angle = Math.acos((-x)/c);
 
-    a = g/(2*(v*Math.cos(angle)*v*Math.cos(angle)));
+    a = -g/(2*(v*Math.cos(angle)*v*Math.cos(angle)));
 
     return(a);
 }
 
 function calc_b () {
+    console.log("calculating b");
+
     var b;
     var x = 0;
     var y = 0;
@@ -44,42 +48,45 @@ function calc_b () {
 
     var c = Math.sqrt(x*x + y*y);
     var angle = Math.acos((-x)/c);
-
+    
     b = Math.tan(angle);
     return(b);
 
 }
 
 function shoot() {
-    var a = calc_a(aimingpointx, aimingpointy);
-    var b = calc_b(aimingpointx, aimingpointy);
-    bullet_animate(a, b);
-
-
+    a = calc_a(/*aimingpointx, aimingpointy*/);
+    b = calc_b(/*aimingpointx, aimingpointy*/);
+    shooting = true;
+    bullet_animate();
+    console.log("a: ", a, "b: ",b);
+    aiming = false;
 }
 
 var bulletx = 30;
 var bullety = 30;
 
-function bullet_animate(a,b) {
+function bullet_animate() {
     const ctx = document.getElementById("battlefield").getContext("2d");
 
-    if (turn === 1) {
-        
-        bulletx = BLUETANKx + time;
+    console.log("a: ", a, "b: ",b);
 
-    }
+    var hældning = b*bulletx;
+    console.log("Hældning: ", hældning);
 
-    if (turn === 2 ){
-        bulletx = REDTANKx + time;
-    }
+    var krumning = a*(bulletx*bulletx);
 
-    time += 1;
+    console.log("kruming: ", krumning);
 
-    bullety = b*bulletx + a*(bulletx*bulletx);
+    bullety = hældning+krumning;
     
-    console.log(bulletx,bullety);
+    
+    console.log("bulletx: ",bulletx, "bullety: ", bullety);
 
     ctx.drawImage(bullet, bulletx, bullety);
-    requestAnimationFrame(bullet_animate);
+
+    if (shooting) {
+        //requestAnimationFrame(bullet_animate);
+        setTimeout(bullet_animate, 5);
+    } 
 }

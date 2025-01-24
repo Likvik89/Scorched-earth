@@ -1,6 +1,6 @@
 
 window.onload=function() {
-    bullet_animate();
+    //bullet_animate();
     draw_map();
     //shoot();
     }

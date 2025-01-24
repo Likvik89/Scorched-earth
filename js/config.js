@@ -11,6 +11,8 @@ var aimingpointx = 0;
 var aimingpointy = 0;
 var aiming = false;
 var shooting = false;
+var a;
+var b;
 
 //movement variables
 var max_steps = 105;
