@@ -11,8 +11,19 @@ var aimingpointx = 0;
 var aimingpointy = 0;
 var aiming = false;
 var shooting = false;
+
+
+//global værdier til affyring
 var a;
 var b;
+var v;
+var c;
+var g = 9.8;
+var angle;
+
+//Skud variabler
+var blueBulletx;
+var blueBullety;
 
 //movement variables
 var max_steps = 105;
