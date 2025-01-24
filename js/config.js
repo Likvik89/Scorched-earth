@@ -29,9 +29,9 @@ var bluemeter = 0;
 var redmeter = 0;
 
 //position and speed
-var BLUETANKx = 300;
-var BLUETANKy = 300;
-var REDTANKx = 400;
+var BLUETANKx = 750;
+var BLUETANKy = 400;
+var REDTANKx = 250;
 var REDTANKy = 400;
 var movementSpeed = 2;
 
@@ -40,12 +40,7 @@ var tankHeight = 45;
 var tankWidth = 50;
 
 
-//BLUETANK Movement variable:
-var movementD = false;
-var movementA = false; 
-var movementW = false;
-var movementS = false;
-var jump = false; 
+
 
 //REDTANK Movement variable: 
 var movementI = false;
