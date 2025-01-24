@@ -37,7 +37,7 @@ var movementSpeed = 2;
 
 //Dimensioner på tanks
 var tankHeight = 45;
-var tankWidth = 50;
+var tankWidth = 45;
 
 
 
