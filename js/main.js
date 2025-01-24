@@ -1,8 +1,8 @@
 
 window.onload=function() {
-    //movement();
-    //mapBorder();
+    bullet_animate();
     draw_map();
+    //shoot();
     }
 
 function draw(context){

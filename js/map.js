@@ -16,6 +16,9 @@ function draw_map() {
     // When the mouse button is released
     document.addEventListener("mouseup", function(event) {
         isMouseDown = false;
+        if (aiming) {
+            shoot();
+        }
         aiming = false;
         //console.log("Mouse button is released.");
     });

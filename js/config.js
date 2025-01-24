@@ -3,6 +3,7 @@
 //Genereal global variables
 var drawing = false;
 var frame = 0;
+var time = 0;
 var turn = 1;
 var mouseX = 0;
 var mouseY = 0;
