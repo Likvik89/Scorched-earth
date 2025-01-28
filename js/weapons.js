@@ -5,10 +5,8 @@ function calc_a(){
     let y = 0;
 
     if (turn === 1) {
-        //x = BLUETANKx-aimingpointx;
         x = (BLUETANKx-aimingpointx)
         y = (BLUETANKy-aimingpointy)
-        //y = BLUETANKy-aimingpointy;  
     }
     if (turn === 2) {
         x= (REDTANKx-aimingpointx);
@@ -17,7 +15,7 @@ function calc_a(){
 
     // regn distancen fra mus til tank
     c = Math.sqrt(x*x + y*y);
-    v = c/2; //skalér hastighed baseret på distance
+    v = c/3; //skalér hastighed baseret på distance
 
     //vinkel af skud
     angle = Math.atan2(-y,x);
@@ -47,6 +45,8 @@ function shoot() {
 }
 
 function bulletTravel(v, g, a, b, start) {
+    ctx = document.getElementById("battlefield").getContext("2d");
+
     console.log("Mouse position", "x:", aimingpointx, "y:", aimingpointy);
     console.log("Tank position", "x:", BLUETANKx, "y:", BLUETANKy);
     console.log("Difference", "x:", BLUETANKx - aimingpointx, "y:", BLUETANKy - aimingpointy);
@@ -77,18 +77,19 @@ function bulletTravel(v, g, a, b, start) {
 
     // Interval to calculate positions
     const interval = setInterval(() => {
-        m += travelPerSecond * 0.1; // Increment x per time step
-        secondsPassed += 0.1;
+        m += travelPerSecond * 0.05; // Increment x per time step
+        secondsPassed += 0.01;
 
         // Calculate y using the quadratic equation
         blueBulletx = m;
         blueBullety = battlefieldHeight - ((a * blueBulletx ** 2) + (b * blueBulletx) + BLUETANKy);
 
+
         if (blueBullety > battlefieldHeight) {
             blueBullety = battlefieldHeight; // Cap to ground level
         }
 
-        console.log("Bullet x:", blueBulletx.toFixed(2), "Bullet y:", blueBullety.toFixed(2));
+        console.log("Bullet x:", blueBulletx.toFixed(2)+BLUETANKx, "Bullet y:", blueBullety.toFixed(2))+BLUETANKy;
 
         // Stop interval when bullet hits the left wall
         if (blueBulletx <= -BLUETANKx){
@@ -98,7 +99,7 @@ function bulletTravel(v, g, a, b, start) {
         // stop interval when bullet hits right wall
         if (blueBulletx >=battlefieldWidth){
             clearInterval(interval);
-            console.log("Bullet hit right wall:","x", m.toFixed(2),"y",blueBullety.toFixed(2));
+            console.log("Bullet hit right wall:","x", m.toFixed(2),"y",blueBullety.toFixed(2)); 
         }
         // stop bullet when bullet hits roof
         if (blueBullety <= 0){
@@ -110,8 +111,8 @@ function bulletTravel(v, g, a, b, start) {
             clearInterval(interval);
             console.log("Final value:","x", m.toFixed(2),"y",blueBullety.toFixed(2));
         }
-
-    }, 1000 * 0.1); // Run every 0.1 seconds
+        
+    }, 1000 * 0.01); // Run every 0.1 seconds
 }
 
 

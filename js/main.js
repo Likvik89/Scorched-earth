@@ -6,7 +6,7 @@ window.onload=function() {
     }
 
 function draw(context){
-
+    context.drawImage(bullet, BLUETANKx+blueBulletx, blueBullety/*+blueBullety*/);
     context.drawImage(BLUETANK, 0, (Math.floor(frame))*45, 45, 45, BLUETANKx, BLUETANKy, 45, 45);
     context.drawImage(REDTANK, 0, (Math.floor(frame))*45, 45, 45, REDTANKx, REDTANKy, 45, 45);
     context.restore();

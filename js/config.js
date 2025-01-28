@@ -5,13 +5,14 @@ var drawing = false;
 var frame = 0;
 var time = 0;
 var turn = 1;
+
+//aiming / shooting variables
 var mouseX = 0;
 var mouseY = 0;
 var aimingpointx = 0;
 var aimingpointy = 0;
 var aiming = false;
 var shooting = false;
-
 
 //global værdier til affyring
 var a;
@@ -24,6 +25,8 @@ var angle;
 //Skud variabler
 var blueBulletx;
 var blueBullety;
+
+
 
 //movement variables
 var max_steps = 105;
@@ -66,9 +69,11 @@ REDTANK.src = "sprites/red_tank.png"
 var BLUETANK = new Image();
 BLUETANK.src = "sprites/blue_tank.png";
 
+var bullet = new Image();
+bullet.src = "sprites/cannon_ball.png";
 
 var loaded_images = 0;
-var images = 2;
+var images = 3;
 
 function load_image() {
     loaded_images++;
@@ -87,4 +92,9 @@ BLUETANK.onload = function(){
 REDTANK.onload = function(){
     load_image();
     console.log("redtank loaded");
+}
+
+bullet.onload = function(){
+    load_image();
+    console.log("bullet loaded");
 }
