@@ -70,7 +70,22 @@ var BLUETANK = new Image();
 BLUETANK.src = "sprites/blue_tank.png";
 
 var bullet = new Image();
-bullet.src = "sprites/cannon_ball.png";
+bullet.src = "sprites/cannon_ball.png"
+function stealth(){
+    if (bluemeter>101){
+        bullet.src = "sprites/supernova.png"
+    }
+    else{
+        bullet.src = "sprites/cannon_ball.png";
+    }
+}
+
+function resetbluemeter(){
+    if (bluemeter>101){
+        bluemeter=0
+    }
+}
+
 
 var loaded_images = 0;
 var images = 3;

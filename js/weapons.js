@@ -35,6 +35,7 @@ function calc_b () {
 }
 
 function shoot() {
+    stealth();
     a = calc_a(/*aimingpointx, aimingpointy*/);
     b = calc_b(/*aimingpointx, aimingpointy*/);
     shooting = true;
@@ -94,21 +95,25 @@ function bulletTravel(v, g, a, b, start) {
         if (blueBulletx <= -BLUETANKx){
             clearInterval(interval);
             console.log("Bullet hit left wall:","x", m.toFixed(2),"y",blueBullety.toFixed(2));
+            resetbluemeter()
         }
         // stop interval when bullet hits right wall
         if (blueBulletx >=battlefieldWidth){
             clearInterval(interval);
-            console.log("Bullet hit right wall:","x", m.toFixed(2),"y",blueBullety.toFixed(2)); 
+            console.log("Bullet hit right wall:","x", m.toFixed(2),"y",blueBullety.toFixed(2));
+            resetbluemeter()
         }
         // stop bullet when bullet hits roof
         if (blueBullety <= 0){
             clearInterval(interval);
             console.log("Bullet hit roof:","x", m.toFixed(2),"y",blueBullety.toFixed(2));
+            resetbluemeter()
         }
 
         if (secondsPassed >= travelTime) {
             clearInterval(interval);
             console.log("Final value:","x", m.toFixed(2),"y",blueBullety.toFixed(2));
+            resetbluemeter()
         }
         
     }, 1000 * 0.01); // Run every 0.1 seconds

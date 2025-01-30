@@ -14,6 +14,7 @@ function draw(context){
 }
 
 function animate() {
+    
     drawHealthBar();
     frame+=0.2;
 
@@ -68,6 +69,6 @@ function endturn(){
         red_current_steps = 0;
     }
 
-
+    console.log(bluemeter)
     console.log(turn);
 }
