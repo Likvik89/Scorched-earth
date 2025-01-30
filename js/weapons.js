@@ -35,6 +35,7 @@ function calc_b () {
 }
 
 function shoot() {
+    stealth()
     a = calc_a();
     b = calc_b();
     shooting = true;
