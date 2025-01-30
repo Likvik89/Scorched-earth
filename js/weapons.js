@@ -45,7 +45,6 @@ function shoot() {
 }
 
 function bulletTravel(v, g, a, b, start) {
-    ctx = document.getElementById("battlefield").getContext("2d");
 
     console.log("Mouse position", "x:", aimingpointx, "y:", aimingpointy);
     console.log("Tank position", "x:", BLUETANKx, "y:", BLUETANKy);
