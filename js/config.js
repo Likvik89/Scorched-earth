@@ -13,6 +13,7 @@ var aimingpointx = 0;
 var aimingpointy = 0;
 var aiming = false;
 var shooting = false;
+var preview_lenght = 45;
 
 //global værdier til affyring
 var a;

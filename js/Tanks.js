@@ -11,7 +11,7 @@ document.addEventListener("keyup", (e) => {
 
 function updateMovement() {
     // Tank movement
-    if (pressedKeys.has(87) && BLUETANKy > 0) { // W
+    if (pressedKeys.has(87) && BLUETANKy > 0 && !shooting) { // W
         
         //Tjekker turen, og flytter den tilsavrende tank
         if (turn === 1 && blue_current_steps < max_steps){
@@ -24,7 +24,7 @@ function updateMovement() {
         }
     }
 
-    if (pressedKeys.has(83) && BLUETANKy < battlefieldHeight - tankHeight) { // S
+    if (pressedKeys.has(83) && BLUETANKy < battlefieldHeight - tankHeight && !shooting) { // S
         
         if (turn === 1 && blue_current_steps < max_steps) {
             BLUETANKy += movementSpeed;
@@ -36,7 +36,7 @@ function updateMovement() {
         }
     }
 
-    if (pressedKeys.has(68) && BLUETANKx < battlefieldWidth - tankWidth) { // D
+    if (pressedKeys.has(68) && BLUETANKx < battlefieldWidth - tankWidth && !shooting) { // D
         if (turn === 1 && blue_current_steps < max_steps) {
             BLUETANKx += movementSpeed;
             blue_current_steps++;
@@ -47,7 +47,7 @@ function updateMovement() {
         }
     }
 
-    if (pressedKeys.has(65) && BLUETANKx > 0) { // A
+    if (pressedKeys.has(65) && BLUETANKx > 0 && !shooting) { // A
         if (turn === 1 && blue_current_steps < max_steps){
             BLUETANKx -= movementSpeed;
             blue_current_steps++;
