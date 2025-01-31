@@ -79,7 +79,13 @@ function stealth(){
 
 function resetbluemeter(){
     if (bluemeter>101){
-        bluemeter=0
+        bluemeter=0;
+    }
+}
+
+function resetredmeter(){
+    if (redmeter>101){
+        redmeter = 0;
     }
 }
 
