@@ -49,6 +49,8 @@ var movementSpeed = 2;
 //Dimensioner på tanks
 var tankHeight = 45;
 var tankWidth = 45;
+var ballHeight;
+var ballWidth;
 
 
 
@@ -71,9 +73,13 @@ bullet.src = "sprites/cannon_ball.png"
 function stealth(){
     if (bluemeter>101){
         bullet.src = "sprites/supernova.png"
+        ballWidth = 106
+        ballHeight = 112 
     }
     else{
         bullet.src = "sprites/cannon_ball.png";
+        ballHeight = 15;
+        ballWidth = 15;
     }
 }
 
