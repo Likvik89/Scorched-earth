@@ -47,7 +47,12 @@ function draw_map() {
                 }
             }
             if (turn ===2) {
+                if (mouseX >= REDTANKx && mouseX <= REDTANKx+tankWidth) {
+                    if (mouseY >= REDTANKy && mouseY <= REDTANKy+tankHeight) {
 
+                        aiming = true;
+                    }
+                }
             }
 
             if (drawing) {

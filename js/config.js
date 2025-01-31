@@ -16,16 +16,12 @@ var shooting = false;
 var preview_lenght = 45;
 
 //global værdier til affyring
-var a;
-var b;
-var v;
-var c;
 var g = 9.8;
-var angle;
+var hasShot = false;
 
 //Skud variabler
-var blueBulletx;
-var blueBullety;
+var Bulletx;
+var Bullety;
 
 
 

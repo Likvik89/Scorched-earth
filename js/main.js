@@ -14,17 +14,22 @@ function draw(context){
             context.fillStyle = "red";
 
             var previewx = x+BLUETANKx+22;
-            console.log(previewx);
+            //console.log(previewx);
 
             var previewy = ((a * previewx ** 2) + (b * previewx) + BLUETANKy);
-            console.log(previewy);
+            //console.log(previewy);
 
             context.fillRect(previewx, previewy, 10, 10); 
         }
     }
 
+    if (turn === 1){
+        context.drawImage(bullet, BLUETANKx+Bulletx, Bullety/*+Bullety*/); 
+    }
+    if (turn === 2){
+        context.drawImage(bullet, REDTANKx+Bulletx, Bullety/*+Bullety*/);
+    }
 
-    context.drawImage(bullet, BLUETANKx+blueBulletx, blueBullety/*+blueBullety*/);
     context.drawImage(BLUETANK, 0, (Math.floor(frame))*45, 45, 45, BLUETANKx, BLUETANKy, 45, 45);
     context.drawImage(REDTANK, 0, (Math.floor(frame))*45, 45, 45, REDTANKx, REDTANKy, 45, 45);
     context.restore();
@@ -86,7 +91,7 @@ function endturn(){
         }
         red_current_steps = 0;
     }
-
+    hasShot = false;
     console.log(bluemeter)
     console.log(turn);
 }

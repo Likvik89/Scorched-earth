@@ -3,6 +3,7 @@ function calc_a(){
 
     let x = 0;
     let y = 0;
+    let c, v, angle, a;
 
     if (turn === 1) {
         x = (BLUETANKx-aimingpointx)
@@ -22,102 +23,98 @@ function calc_a(){
 
     a = -g/(2*(v*Math.cos(angle))**2);
 
-    return(a);
+    return{a, v, angle,c};
 }
 
-function calc_b () {
+function calc_b (angle) {
     //console.log("calculating b");
-
-    b = Math.tan(angle);
     
-    return(b);
+    return(Math.tan(angle));
 
 }
+
 
 function shoot() {
-    stealth()
-    a = calc_a();
-    b = calc_b();
-    shooting = true;
-    //bullet_animate();
-    console.log("a: ", a, "b: ",b);
-    bulletTravel(v, g, a, b, 0)
-    aiming = false;
-}
-
-function bulletTravel(v, g, a, b, start) {
-
-    console.log("Mouse position", "x:", aimingpointx, "y:", aimingpointy);
-    console.log("Tank position", "x:", BLUETANKx, "y:", BLUETANKy);
-    console.log("Difference", "x:", BLUETANKx - aimingpointx, "y:", BLUETANKy - aimingpointy);
-    console.log("c (distance):", c);
-    console.log("Angle (degrees):", angle * (180 / Math.PI));
-
-    // Calculate travel time
-    const vx = v * Math.cos(angle); // Horizontal velocity
-    const vy = v * Math.sin(angle); // Vertical velocity
-    const travelTime = (-vy - Math.sqrt(vy ** 2 - 2 * -g * BLUETANKy)) / -g;
-
-    // Calculate total distance
-    const distance = vx * travelTime;
-
-    // Check for invalid travel time
-    if (travelTime <= 0 || isNaN(travelTime)) {
-        console.error("Invalid travel time:", travelTime);
+    if (hasShot){
+        console.log("You can only shoot once ^^")
         return;
     }
+    stealth()
+    
+    let result = calc_a();
+    let a = result.a;
+    let v = result.v;
+    let angle = result.angle;
+    let c = result.c;
+    b = calc_b(angle);
+    
+    shooting = true;   
+    //bullet_animate();
+    console.log("a: ", a, "b: ",b);
+    
+    bulletTravel(v, g, a, b, 0, c, angle)
+    aiming = false;
 
-    // Calculate per-second horizontal travel
-    const travelPerSecond = distance / travelTime;
+    hasShot = true;
+}
 
-    let secondsPassed = 0;
-    let m = start;
+function bulletTravel(v, g, a, b, start, c, angle) {
 
-    console.log("Time that needs to pass:", travelTime);
-
-    // Interval to calculate positions
-    const interval = setInterval(() => {
-        m += travelPerSecond * 0.05; // Increment x per time step
-        secondsPassed += 0.01;
-
-        // Calculate y using the quadratic equation
-        blueBulletx = m;
-        blueBullety = battlefieldHeight - ((a * blueBulletx ** 2) + (b * blueBulletx) + BLUETANKy);
-
-        console.log("Bullet x:", blueBulletx.toFixed(2), "Bullet y:", blueBullety.toFixed(2))+BLUETANKy;
-
-        // Stop interval when bullet hits the left wall
-        if (blueBulletx <= -BLUETANKx){
-            clearInterval(interval);
-            shooting = false;
-            console.log("Bullet hit left wall:","x", m.toFixed(2),"y",blueBullety.toFixed(2));
-            resetbluemeter()
-        }
-        // stop interval when bullet hits right wall
-        if (blueBulletx >=battlefieldWidth/2){
-            clearInterval(interval);
-            shooting = false;
-            console.log("Bullet hit right wall:","x", m.toFixed(2),"y",blueBullety.toFixed(2)); 
-        }
-        // stop bullet when bullet hits roof
-        if (blueBullety <= 0){
-            clearInterval(interval);
-            shooting = false;
-            console.log("Bullet hit roof:","x", m.toFixed(2),"y",blueBullety.toFixed(2));
-            resetbluemeter()
-        }
-
-        if (blueBullety >= battlefieldHeight){
-            clearInterval(interval);
-            shooting = false;
-            console.log("Bullet hit ground:","x", m.toFixed(2),"y",blueBullety.toFixed(2));
-        }
-
-        if (secondsPassed >= travelTime) {
-            clearInterval(interval);
-            console.log("Final value:","x", m.toFixed(2),"y",blueBullety.toFixed(2));
-            resetbluemeter()
+        if (turn === 1) {
+            console.log("Blue tank Position: x:", BLUETANKx, "y:", BLUETANKy);
+        } else {   
+            console.log("Red tank Position: x:", REDTANKx, "y:", REDTANKy);
         }
         
-    }, 1000 * 0.01); // Run every 0.01 seconds
+        console.log("Mouse Position: x:", aimingpointx, "y:", aimingpointy);
+        console.log("c (distance):", c);
+        console.log("Angle (degrees):", angle * (180 / Math.PI));
+    
+        const vx = v * Math.cos(angle);
+        const vy = v * Math.sin(angle);
+        const tankY = turn === 1 ? BLUETANKy : REDTANKy;
+        const travelTime = (-vy - Math.sqrt(vy ** 2 - 2 * -g * tankY)) / -g;
+    
+        if (travelTime <= 0 || isNaN(travelTime)) {
+            console.error("Invalid travel time:", travelTime);
+            return;
+        }
+    
+        const distance = vx * travelTime;
+        const travelPerSecond = distance / travelTime;
+    
+        let secondsPassed = 0;
+        let m = start;
+    
+        console.log("Time needed:", travelTime);
+        const interval = setInterval(() => {
+            m += travelPerSecond * 0.05;
+            secondsPassed += 0.01;
+    
+            Bulletx = m;
+            Bullety = Bullety = battlefieldHeight - ((a * Bulletx ** 2) + (b * Bulletx) + tankY);
+    
+            console.log("Bullet x:", Bulletx.toFixed(2), "Bullet y:", Bullety.toFixed(2));
+    
+            if ((turn === 1 && Bulletx <= -BLUETANKx) || (turn === 2 && Bulletx <= -REDTANKx) ||
+            Bulletx >= battlefieldWidth / 2 || Bullety <= 0 || Bullety >= battlefieldHeight) {
+
+                clearInterval(interval);
+                shooting = false;
+                console.log("Bullet impact: x", m.toFixed(2), "y", Bullety.toFixed(2));
+                
+                if (turn === 1) {
+                    resetbluemeter();
+                } else {
+                    resetredmeter();
+                }
+            }
+        
+            if (secondsPassed >= travelTime) {
+                clearInterval(interval);
+                console.log("Final Position: x", m.toFixed(2), "y", Bullety.toFixed(2));
+                 // toggle turn
+            }
+    
+        }, 1000 * 0.01);
 }
