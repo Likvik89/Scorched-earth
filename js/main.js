@@ -5,23 +5,63 @@ window.onload=function() {
     //shoot();
     }
 
-function draw(context){
+// Preview for bullet trajectory
+function draw(context) {
     if (aiming) {
-        a = calc_a();
-        b = calc_b();
-    
-        for (let x = 0; x < preview_lenght; x++) {
+        stealth();
+
+        // Tank positions
+        let tankX = (turn === 1) ? BLUETANKx : REDTANKx;
+        let tankY = (turn === 1) ? BLUETANKy : REDTANKy;
+
+        // Calculate shot parameters
+        let result = calc_a();
+        let a = result.a;
+        let b = calc_b(-result.angle);
+        let v = result.v;
+        let angle = -result.angle;
+
+        // Velocity components
+        const vx = v * Math.cos(angle);
+        const vy = v * Math.sin(angle);
+
+        // **Lock the preview length to a fixed value**
+        const preview_length = 200; // Fixed length in pixels
+
+        // **Determine step size based on velocity**
+        let step_size = Math.max(10, v / 5); // Faster shots → more spaced-out dots
+
+        // **Number of preview points based on fixed preview length**
+        let preview_points = Math.floor(preview_length / step_size);
+
+        let travel_distance = 0; // Tracks actual traveled distance along the curve
+
+        for (let i = 0; i < preview_points; i++) {
+            // **Calculate time based on travel distance**
+            let time = travel_distance / Math.abs(vx); // Travel distance converted to time
+
+            // Calculate projectile position
+            let previewx = tankX + vx * time;
+            let previewy = tankY + vy * time - (0.5 * -g * time * time);
+
+            // Ensure preview stays in bounds
+            if (previewx < 0 || previewx > battlefieldWidth || previewy < 0 || previewy > battlefieldHeight) {
+                break;
+            }
+
+            // **Draw preview dot (circle)**
             context.fillStyle = "red";
+            context.beginPath();
+            context.arc(previewx, previewy, ballWidth / 2, 0, Math.PI * 2); // Draws a circle
+            context.fill();
 
-            var previewx = x+BLUETANKx+22;
-            //console.log(previewx);
-
-            var previewy = ((a * previewx ** 2) + (b * previewx) + BLUETANKy);
-            //console.log(previewy);
-
-            context.fillRect(previewx, previewy, 10, 10); 
+            // Move forward in travel distance
+            travel_distance += step_size;
         }
     }
+
+
+
 
     if (turn === 1){
         context.drawImage(bullet, BLUETANKx+Bulletx, Bullety/*+Bullety*/); 
@@ -70,7 +110,6 @@ function animate() {
     // Call animate recursively using requestAnimationFrame for smooth looping
     requestAnimationFrame(animate);
 }
-
 function endturn(){
     turn++;
     

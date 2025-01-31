@@ -1,4 +1,5 @@
 console.log("turn",turn)
+
 function calc_a(){
     //console.log("calculating a");
 
@@ -94,7 +95,7 @@ function bulletTravel(v, g, a, b, start, c, angle) {
             secondsPassed += 0.01;
     
             Bulletx = m;
-            Bullety = Bullety = battlefieldHeight - ((a * Bulletx ** 2) + (b * Bulletx) + tankY);
+            Bullety = battlefieldHeight - ((a * Bulletx ** 2) + (b * Bulletx) + tankY);
     
             //console.log("Bullet x:", Bulletx.toFixed(2) + tankX, "Bullet y:", Bullety.toFixed(2));
             //console.log("tank x", tankX)
@@ -114,12 +115,20 @@ function bulletTravel(v, g, a, b, start, c, angle) {
 
 // Tank collision check
 if (
-    (turn === 2 && Bulletx + tankX >= BLUETANKx && Bulletx + tankX <= BLUETANKx + 45 && Bullety >= BLUETANKy && Bullety <= BLUETANKy + 45) ||
-    (turn === 1 && Bulletx + tankX >= REDTANKx && Bulletx + tankX <= REDTANKx + 45 && Bullety >= REDTANKy && Bullety <= REDTANKy + 45)
+    (turn === 2 && Bulletx + tankX + ballWidth >= BLUETANKx && Bulletx + tankX <= BLUETANKx + 45 &&
+     Bullety + ballHeight >= BLUETANKy && Bullety <= BLUETANKy + 45) ||
+
+    (turn === 1 && Bulletx + tankX + ballWidth >= REDTANKx && Bulletx + tankX <= REDTANKx + 45 &&
+     Bullety + ballHeight >= REDTANKy && Bullety <= REDTANKy + 45)
 ) {
     clearInterval(interval);
     shooting = false;
     console.log("Bullet hit the tank: x", Bulletx.toFixed(2), "y", Bullety.toFixed(2));
+
+    // Stop bullet movement by keeping its final position
+    Bulletx = Bulletx; 
+    Bullety = Bullety; 
+
     if (turn === 1) {
         resetbluemeter();
     } else {

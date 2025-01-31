@@ -51,6 +51,8 @@ var tankHeight = 45;
 var tankWidth = 45;
 var ballHeight;
 var ballWidth;
+//var space_scale = 5; //scale the air between the prediction line
+//var preview_length = 20;
 
 
 

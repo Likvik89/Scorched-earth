@@ -25,12 +25,20 @@ function draw_map() {
 
     // Track the mouse movement
     document.addEventListener("mousemove", function(event) {
-        mouseX = event.offsetX;
-        mouseY = event.offsetY;
+
+        const canvas = document.getElementById("battlefield");
+        const canvasRect = canvas.getBoundingClientRect();
+
+        mouseX = event.pageX - canvasRect.left;
+        mouseY = event.pageY - canvasRect.top;
+        
+        //mouseX = event.offsetX;
+        //mouseY = event.offsetY;
 
         if (aiming) {
             aimingpointx = mouseX;
             aimingpointy = mouseY;
+            console.log("aim x",aimingpointx,"aim y", aimingpointy)
             //console.log(aimingpointx, aimingpointy);
         }
 
