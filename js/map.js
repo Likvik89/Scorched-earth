@@ -38,7 +38,7 @@ function draw_map() {
         if (aiming) {
             aimingpointx = mouseX;
             aimingpointy = mouseY;
-            console.log("aim x",aimingpointx,"aim y", aimingpointy)
+            //console.log("aim x",aimingpointx,"aim y", aimingpointy)
             //console.log(aimingpointx, aimingpointy);
         }
 

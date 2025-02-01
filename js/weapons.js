@@ -61,12 +61,6 @@ function shoot() {
 }
 
 function bulletTravel(v, g, a, b, start, c, angle) {
-
-        if (turn === 1) {
-            console.log("Blue tank Position: x:", BLUETANKx, "y:", BLUETANKy);
-        } else {   
-            console.log("Red tank Position: x:", REDTANKx, "y:", REDTANKy);
-        }
         
         //console.log("Mouse Position: x:", aimingpointx, "y:", aimingpointy);
         //console.log("c (distance):", c);
@@ -76,6 +70,7 @@ function bulletTravel(v, g, a, b, start, c, angle) {
         const vy = v * Math.sin(angle);
         let tankY = turn === 1 ? BLUETANKy : REDTANKy;
         let tankX = turn === 1 ? BLUETANKx : REDTANKx;
+
         const travelTime = (-vy - Math.sqrt(vy ** 2 - 2 * -g * tankY)) / -g;
     
         if (travelTime <= 0 || isNaN(travelTime)) {
@@ -95,7 +90,7 @@ function bulletTravel(v, g, a, b, start, c, angle) {
             secondsPassed += 0.01;
     
             Bulletx = m;
-            Bullety = battlefieldHeight - ((a * Bulletx ** 2) + (b * Bulletx) + tankY);
+            Bullety = -(a * Bulletx ** 2) - (b * Bulletx) + tankY;
     
             //console.log("Bullet x:", Bulletx.toFixed(2) + tankX, "Bullet y:", Bullety.toFixed(2));
             //console.log("tank x", tankX)
