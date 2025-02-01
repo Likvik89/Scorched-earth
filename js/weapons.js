@@ -35,7 +35,6 @@ function calc_b (angle) {
 
 }
 
-
 function shoot() {
     if (hasShot){
         console.log("You can only shoot once ^^")
@@ -55,8 +54,9 @@ function shoot() {
     console.log("a: ", a, "b: ",b);
     
     bulletTravel(v, g, a, b, 0, c, angle)
+    
+    bulletActive = true;
     aiming = false;
-
     hasShot = true;
 }
 
@@ -93,7 +93,6 @@ function bulletTravel(v, g, a, b, start, c, angle) {
             Bullety = -(a * Bulletx ** 2) - (b * Bulletx) + tankY;
     
             //console.log("Bullet x:", Bulletx.toFixed(2) + tankX, "Bullet y:", Bullety.toFixed(2));
-            //console.log("tank x", tankX)
             if (Bulletx<=-tankX){
                 Bulletx = -tankX
             }
@@ -115,9 +114,10 @@ if (
 
     (turn === 1 && Bulletx + tankX + ballWidth >= REDTANKx && Bulletx + tankX <= REDTANKx + 45 &&
      Bullety + ballHeight >= REDTANKy && Bullety <= REDTANKy + 45)
-) {
-    clearInterval(interval);
+    ) 
+    { clearInterval(interval);
     shooting = false;
+    hitTank = true;
     console.log("Bullet hit the tank: x", Bulletx.toFixed(2), "y", Bullety.toFixed(2));
 
     // Stop bullet movement by keeping its final position
@@ -136,6 +136,7 @@ if (
 if (Bulletx <= -tankX || Bulletx >= battlefieldWidth-tankX-ballWidth || Bullety <= 0 || Bullety >= battlefieldHeight-ballHeight) {
     clearInterval(interval);
     shooting = false;
+    hitNotTank = true;
     console.log("Bullet hit the wall or went out of bounds: x", Bulletx.toFixed(2) + tankX, "y", Bullety.toFixed(2));
     if (turn === 1) {
         resetbluemeter();

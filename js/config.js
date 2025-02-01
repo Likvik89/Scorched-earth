@@ -1,5 +1,25 @@
 //her har vi alle vores globale variabler
 
+
+
+// Health values
+var health_red = 195;
+var health_blue = 195
+var healthStart, healthNow;
+var dmg; // defined on stealth function
+var TotalHP;
+
+if (turn === 1){
+    TotalHP = 100; //total HP of the red tank
+}else{
+    TotalHP = 100 // total HP of the blue tank
+}
+
+var TotalDamage = {
+    red: 0,
+    blue: 0
+};
+
 //Genereal global variables
 var drawing = false;
 var frame = 0;
@@ -17,22 +37,21 @@ var preview_lenght = 45;
 
 //global værdier til affyring
 var g = 9.8;
-var hasShot = false;
+var hasShot = false; //sættes til true, hvis man har skudt
+var hitTank = false; //Sættes til true, hvis skudet rammer en tank
+var hitNotTank = false; // sættes til true, hvis skuddet rammer en væg, tag eller gulv.
+var bulletActive = false; // sættes til true, når skuddet er tegnet
 
 //Skud variabler
 var Bulletx;
 var Bullety;
-
-
 
 //movement variables
 var max_steps = 105;
 var blue_current_steps = 0;
 var red_current_steps = 105;
 
-//health
-var health_red = 195;
-var health_blue = 195;
+
 
 //super meters
 var maxmeter = 102;
@@ -70,6 +89,11 @@ REDTANK.src = "sprites/red_tank.png"
 var BLUETANK = new Image();
 BLUETANK.src = "sprites/blue_tank.png";
 
+
+
+
+
+
 var bullet = new Image();
 bullet.src = "sprites/cannon_ball.png"
 function stealth(){
@@ -77,11 +101,13 @@ function stealth(){
         bullet.src = "sprites/supernova.png"
         ballWidth = 106
         ballHeight = 112 
+        dmg = (40/TotalHP)*195; // 195 should not be changed
     }
     else{
         bullet.src = "sprites/cannon_ball.png";
         ballHeight = 15;
         ballWidth = 15;
+        dmg = (20/TotalHP)*195; // 195 should not be changed    
     }
 }
 

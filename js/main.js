@@ -62,14 +62,15 @@ function draw(context) {
 
 
 
-
+    if (bulletActive) {
+    console.log("Bullet is active")
     if (turn === 1){
         context.drawImage(bullet, BLUETANKx+Bulletx, Bullety/*+Bullety*/); 
     }
     if (turn === 2){
         context.drawImage(bullet, REDTANKx+Bulletx, Bullety/*+Bullety*/);
     }
-
+}
     context.drawImage(BLUETANK, 0, (Math.floor(frame))*45, 45, 45, BLUETANKx, BLUETANKy, 45, 45);
     context.drawImage(REDTANK, 0, (Math.floor(frame))*45, 45, 45, REDTANKx, REDTANKy, 45, 45);
     context.restore();
@@ -86,18 +87,19 @@ function animate() {
     }
 
     var canvas = document.getElementById("battlefield");
+    var context = canvas.getContext("2d");
+
 
     if (!canvas) {
         console.error("Canvas element with ID 'battlefield' not found!");
         return;
     }
 
-    var context = canvas.getContext("2d");
+    
 
     // Clear the canvas at the start of each frame
     if (drawing) {
-        context.clearRect(BLUETANKx, BLUETANKy, tankWidth, tankHeight);
-        context.clearRect(REDTANKx,REDTANKy, tankWidth, tankHeight);
+        context.clearRect(tankX, tankY, tankWidth, tankHeight);
     }
     else {
         context.clearRect(0, 0, canvas.width, canvas.height);
@@ -110,9 +112,12 @@ function animate() {
     // Call animate recursively using requestAnimationFrame for smooth looping
     requestAnimationFrame(animate);
 }
+
+
 function endturn(){
+
+    bulletActive = false;
     turn++;
-    
     
     if (turn > 2){
         redmeter += (max_steps-red_current_steps)/2
@@ -130,7 +135,10 @@ function endturn(){
         }
         red_current_steps = 0;
     }
+
     hasShot = false;
+    hitTank = false;
+    hitNotTank = false;
     console.log(bluemeter)
     console.log(turn);
 }
