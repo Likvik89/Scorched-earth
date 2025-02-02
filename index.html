@@ -98,8 +98,10 @@
         // Handle fullscreen state changes
         document.addEventListener('fullscreenchange', () => {
             if (document.fullscreenElement) {
+                fullscreen = true;
                 resizeCanvas(); // Adjust canvas size in fullscreen mode
             } else {
+                fullscreen = false;
                 // Reset canvas size when exiting fullscreen
                 battlefield.width = 1024;
                 battlefield.height = 800;

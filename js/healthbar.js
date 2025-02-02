@@ -54,7 +54,6 @@ function drawHealthBar() {
     }
 
 
-// end of health logic
     //new health
     if (hitTank){
 

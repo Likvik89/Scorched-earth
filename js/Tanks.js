@@ -1,6 +1,11 @@
 let pressedKeys = new Set();
+let originalPositions = {
+    BLUETANKx: 750,
+    BLUETANKy: 400,
+    REDTANKx: 250,
+    REDTANKy: 400}
 
-// Event listeners for keydown and keyup
+    // Event listeners for keydown and keyup
 document.addEventListener("keydown", (e) => {
     pressedKeys.add(e.keyCode); // Add keycode to the set when key is pressed
 }, false);
@@ -58,6 +63,41 @@ function updateMovement() {
         }
     }
 
+    if (fullscreen){
+
+        // scale when fullscreen
+        let scaleX = window.innerWidth/1024
+        let scaleY = window.innerHeight/800
+    
+        if (hasScaled === false){
+            BLUETANKx *= scaleX
+            REDTANKx *= scaleX
+        
+            BLUETANKy *= scaleY
+            REDTANKy *= scaleY
+            hasScaled = true;
+        }
+        
+        
+        console.log("blue tank x", BLUETANKx)
+    }
+    else{
+
+        let scaleX = window.innerWidth/1024
+        let scaleY = window.innerHeight/800
+
+        if (hasScaled) {
+            BLUETANKx /= scaleX
+            REDTANKx /= scaleX
+        
+            BLUETANKy /= scaleY
+            REDTANKy /= scaleY
+
+            hasScaled = false;  // Reset the scaling flag
+            }
+        }
+    
+   
 /*
     // REDTANK movement
     if (pressedKeys.has(73) && REDTANKy > 0) { // I
@@ -74,3 +114,4 @@ function updateMovement() {
     }
 */
 }
+

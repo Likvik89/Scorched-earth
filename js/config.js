@@ -1,6 +1,6 @@
 //her har vi alle vores globale variabler
-
-
+var fullscreen = false;
+var hasScaled = false;
 
 // Health values
 var health_red = 195;
