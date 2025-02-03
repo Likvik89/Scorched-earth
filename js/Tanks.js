@@ -66,10 +66,11 @@ function updateMovement() {
     if (fullscreen){
 
         // scale when fullscreen
-        let scaleX = window.innerWidth/1024
-        let scaleY = window.innerHeight/800
+        let scaleX = battlefieldWidth/1024
+        let scaleY = battlefieldHeight/800
     
         if (hasScaled === false){
+
             BLUETANKx *= scaleX
             REDTANKx *= scaleX
         
@@ -79,12 +80,12 @@ function updateMovement() {
         }
         
         
-        console.log("blue tank x", BLUETANKx)
+        console.log("blue tank x", BLUETANKx, "blue tank y", BLUETANKy )
     }
     else{
 
-        let scaleX = window.innerWidth/1024
-        let scaleY = window.innerHeight/800
+        let scaleX = battlefieldWidth/1024
+        let scaleY = battlefieldHeight/800
 
         if (hasScaled) {
             BLUETANKx /= scaleX
