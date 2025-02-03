@@ -79,8 +79,6 @@ function updateMovement() {
             hasScaled = true;
         }
         
-        
-        console.log("blue tank x", BLUETANKx, "blue tank y", BLUETANKy )
     }
     else{
 

@@ -148,5 +148,4 @@ REDTANK.onload = function(){
 
 bullet.onload = function(){
     load_image();
-    console.log("bullet loaded");
 }

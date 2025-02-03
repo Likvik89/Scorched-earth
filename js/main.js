@@ -63,7 +63,6 @@ function draw(context) {
 
 
     if (bulletActive) {
-    console.log("Bullet is active")
     if (turn === 1){
         context.drawImage(bullet, BLUETANKx+Bulletx, Bullety/*+Bullety*/); 
     }

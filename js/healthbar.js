@@ -63,14 +63,14 @@ function drawHealthBar() {
             hitTank = false;
             healthNow = health_blue-TotalDamage.red;
             console.log("tank is hit")
-            console.log("New Red Health Width: ", healthNow, "prior red health", health_red, "change in red health", TotalDamage.red);
+            console.log("Red Health: ", healthNow,"Damage", TotalDamage.red);
         }
         else{
             TotalDamage.blue += dmg;  
             hitTank = false;
             healthNow = health_red-TotalDamage.blue;
             console.log("tank is hit")
-            console.log("New Blue Health Width: ", healthNow);
+            console.log("Blue Health: ", healthNow, "Damage", TotalDamage.blue);
         }
 
         if (healthNow <= 0 ){
