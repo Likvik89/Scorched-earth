@@ -53,8 +53,6 @@ var max_steps = 105;
 var blue_current_steps = 0;
 var red_current_steps = 105;
 
-
-
 //super meters
 var maxmeter = 102;
 var bluemeter = 0;
@@ -76,13 +74,6 @@ var ballWidth;
 //var preview_length = 20;
 
 
-
-
-//REDTANK Movement variable: 
-var movementI = false;
-var movementK = false; 
-var movementJ = false;
-var movementL = false;
 
 
 var REDTANK = new Image();

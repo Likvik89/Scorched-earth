@@ -52,7 +52,7 @@ function draw(context) {
             // **Draw preview dot (circle)**
             context.fillStyle = "red";
             context.beginPath();
-            context.arc(previewx, previewy, ballWidth / 2, 0, Math.PI * 2); // Draws a circle
+            context.arc(previewx+22, previewy+22, ballWidth / 2, 0, Math.PI * 2); // Draws a circle
             context.fill();
 
             // Move forward in travel distance
@@ -82,7 +82,7 @@ function draw(context) {
             }
 
             else{
-                context.drawImage(bullet, BLUETANKx+Bulletx, Bullety/*+Bullety*/);
+                context.drawImage(bullet, BLUETANKx+Bulletx+22, Bullety+10/*+Bullety*/);
             } 
         }
         if (turn === 2){
@@ -90,7 +90,7 @@ function draw(context) {
                 context.drawImage(boom, 0, (Math.floor(explosionframe))*44, 44, 44, REDTANKx+Bulletx,Bullety, 44, 44);
             }
             else{
-                context.drawImage(bullet, REDTANKx+Bulletx, Bullety/*+Bullety*/);
+                context.drawImage(bullet, REDTANKx+Bulletx+22, Bullety+10/*+Bullety*/);
             }
         }
 }

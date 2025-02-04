@@ -8,13 +8,14 @@ function calc_a(){
     let c, v, angle, a;
 
     if (turn === 1) {
-        x = (BLUETANKx-aimingpointx)
-        y = (BLUETANKy-aimingpointy)
+        x = (BLUETANKx-aimingpointx);
+        y = (BLUETANKy-aimingpointy);
     }
     if (turn === 2) {
-        x= (REDTANKx-aimingpointx);
+        x = (REDTANKx-aimingpointx);
         y = (REDTANKy-aimingpointy);
     }
+
 
     // regn distancen fra mus til tank
     c = Math.sqrt(x*x + y*y);
@@ -68,6 +69,8 @@ function bulletTravel(v, g, a, b, start, c, angle) {
         const vy = v * Math.sin(angle);
         let tankY = turn === 1 ? BLUETANKy : REDTANKy;
         let tankX = turn === 1 ? BLUETANKx : REDTANKx;
+
+
 
         const travelTime = (-vy - Math.sqrt(vy ** 2 - 2 * -g * tankY)) / -g;
     
