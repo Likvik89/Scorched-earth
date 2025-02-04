@@ -25,6 +25,8 @@ var drawing = false;
 var frame = 0;
 var time = 0;
 var turn = 1;
+var explosionframe = 0;
+var exploding = false;
 
 //aiming / shooting variables
 var mouseX = 0;
@@ -89,13 +91,13 @@ REDTANK.src = "sprites/red_tank.png"
 var BLUETANK = new Image();
 BLUETANK.src = "sprites/blue_tank.png";
 
-
-
-
-
-
 var bullet = new Image();
 bullet.src = "sprites/cannon_ball.png"
+
+var boom = new Image();
+boom.src = "sprites/boom.png";
+
+
 function stealth(){
     if (bluemeter>101){
         bullet.src = "sprites/supernova.png"
@@ -125,7 +127,7 @@ function resetredmeter(){
 
 
 var loaded_images = 0;
-var images = 3;
+var images = 4;
 
 function load_image() {
     loaded_images++;
@@ -148,4 +150,9 @@ REDTANK.onload = function(){
 
 bullet.onload = function(){
     load_image();
+}
+
+boom.onload = function(){
+    load_image();
+    console.log("boom loaded");
 }

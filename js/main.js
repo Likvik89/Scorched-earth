@@ -61,14 +61,38 @@ function draw(context) {
     }
 
 
+    if (hitNotTank){
+        exploding = true;
+    }
+
+    if (exploding){
+        explosionframe+=0.5;
+        if (explosionframe > 6){
+            explosionframe = 0;
+            exploding = false;
+            bulletActive = false;
+        }
+    }
+
 
     if (bulletActive) {
-    if (turn === 1){
-        context.drawImage(bullet, BLUETANKx+Bulletx, Bullety/*+Bullety*/); 
-    }
-    if (turn === 2){
-        context.drawImage(bullet, REDTANKx+Bulletx, Bullety/*+Bullety*/);
-    }
+        if (turn === 1){
+            if (exploding){
+                context.drawImage(boom, 0, (Math.floor(explosionframe))*44, 44, 44, BLUETANKx+Bulletx,Bullety, 44, 44);
+            }
+
+            else{
+                context.drawImage(bullet, BLUETANKx+Bulletx, Bullety/*+Bullety*/);
+            } 
+        }
+        if (turn === 2){
+            if (exploding) {
+                context.drawImage(boom, 0, (Math.floor(explosionframe))*44, 44, 44, REDTANKx+Bulletx,Bullety, 44, 44);
+            }
+            else{
+                context.drawImage(bullet, REDTANKx+Bulletx, Bullety/*+Bullety*/);
+            }
+        }
 }
     context.drawImage(BLUETANK, 0, (Math.floor(frame))*45, 45, 45, BLUETANKx, BLUETANKy, 45, 45);
     context.drawImage(REDTANK, 0, (Math.floor(frame))*45, 45, 45, REDTANKx, REDTANKy, 45, 45);
