@@ -77,12 +77,13 @@ function drawHealthBar() {
             hitTank = false;
             aiming = false;
             if (turn === 1){
-                console.log("Game over, blue won")
+                alert("Game over, blue won");
             }
             else{
-                console.log("Game over, red won")
+                alert("Game over, red won");
             }
-            
+
+            location.reload();
         }
 
     }
