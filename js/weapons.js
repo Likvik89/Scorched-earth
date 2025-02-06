@@ -108,47 +108,57 @@ function bulletTravel(v, g, a, b, start, c, angle) {
             }
     
 
-// Tank collision check
-if (
-    (turn === 2 && Bulletx + tankX + ballWidth >= BLUETANKx && Bulletx + tankX <= BLUETANKx + 45 &&
-     Bullety + ballHeight >= BLUETANKy && Bullety <= BLUETANKy + 45) ||
+            // Tank collision check
+            if (
+                (turn === 2 && Bulletx + tankX + ballWidth >= BLUETANKx && Bulletx + tankX <= BLUETANKx + 45 &&
+                Bullety + ballHeight >= BLUETANKy && Bullety <= BLUETANKy + 45) ||
 
-    (turn === 1 && Bulletx + tankX + ballWidth >= REDTANKx && Bulletx + tankX <= REDTANKx + 45 &&
-     Bullety + ballHeight >= REDTANKy && Bullety <= REDTANKy + 45)
-    ) 
-    { clearInterval(interval);
-    shooting = false;
-    hitTank = true;
+                (turn === 1 && Bulletx + tankX + ballWidth >= REDTANKx && Bulletx + tankX <= REDTANKx + 45 &&
+                Bullety + ballHeight >= REDTANKy && Bullety <= REDTANKy + 45)
+                ) 
+                { clearInterval(interval);
+                shooting = false;
+                hitTank = true;
+                if (super_active){
+                    superexploding = true;
+                }
+                if (!super_active) {
+                    exploding = true;
+                }
 
-    // Stop bullet movement by keeping its final position
-    Bulletx = Bulletx; 
-    Bullety = Bullety; 
+                // Stop bullet movement by keeping its final position
+                Bulletx = Bulletx; 
+                Bullety = Bullety; 
 
-    if (turn === 1) {
-        resetbluemeter();
-    } else {
-        resetredmeter();
-    }
-    return;
-}
+                if (turn === 1) {
+                    resetbluemeter();
+                } else {
+                    resetredmeter();
+                }
+                return;}
 
-// Wall collision check (left, right, top, and bottom bounds)
-if (Bulletx <= -tankX || Bulletx >= battlefieldWidth-tankX-ballWidth || Bullety <= 0 || Bullety >= battlefieldHeight-ballHeight) {
-    clearInterval(interval);
-    shooting = false;
-    hitNotTank = true;
-    if (turn === 1) {
-        resetbluemeter();
-    } else {
-        resetredmeter();
-    }
-    return;
-}
-
-        
-            if (secondsPassed >= travelTime) {
+            // Wall collision check (left, right, top, and bottom bounds)
+            if (Bulletx <= -tankX || Bulletx >= battlefieldWidth-tankX-ballWidth || Bullety <= 0 || Bullety >= battlefieldHeight-ballHeight) {
                 clearInterval(interval);
+                shooting = false;
+                hitNotTank = true;
+                if (super_active){
+                    superexploding = true;
+                }
+                if (!super_active) {
+                    exploding = true;
+                }
+                if (turn === 1) {
+                    resetbluemeter();
+                } else {
+                    resetredmeter();
+                }
+                return;
             }
-    
-        }, 1000 * 0.01);
+
+                if (secondsPassed >= travelTime) {
+                    clearInterval(interval);
+                }
+
+            }, 1000 * 0.01);
 }

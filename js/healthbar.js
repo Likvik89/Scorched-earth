@@ -56,7 +56,7 @@ function drawHealthBar() {
 
     //new health
     if (hitTank){
-        exploding = true;
+
         if (turn === 1)
             {
             TotalDamage.red += dmg;  

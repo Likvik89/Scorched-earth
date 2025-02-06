@@ -3,6 +3,7 @@ window.onload=function() {
     //bullet_animate();
     draw_map();
     //shoot();
+    has_animate_loaded = true;
     }
 
 // Preview for bullet trajectory
@@ -75,30 +76,59 @@ function draw(context) {
         }
     }
 
+    if (superexploding){
+        superframe+=0.5;
+        if (superframe > 40){
+            superframe = 0;
+            superexploding = false;
+            bulletActive = false;
+            endturn();
+        }
+    }
+
 
     if (bulletActive) {
         if (turn === 1){
             if (exploding){
                 context.drawImage(boom, 0, (Math.floor(explosionframe))*44, 44, 44, BLUETANKx+Bulletx,Bullety, 44, 44);
             }
+            if (superexploding){
+                context.drawImage(superboom, 0, (Math.floor(superframe))*410, 408, 410, BLUETANKx+Bulletx-204,Bullety-205, 408, 410);
+            }
 
             else{
-                context.drawImage(bullet, BLUETANKx+Bulletx, Bullety/*+Bullety*/);
+                if (super_active){
+                    context.drawImage(bullet, BLUETANKx+Bulletx-53, Bullety-56);   
+                }
+                else{
+                    context.drawImage(bullet, BLUETANKx+Bulletx, Bullety/*+Bullety*/);
+                }
             } 
         }
         if (turn === 2){
             if (exploding) {
                 context.drawImage(boom, 0, (Math.floor(explosionframe))*44, 44, 44, REDTANKx+Bulletx,Bullety, 44, 44);
             }
+
+            if (superexploding){
+                context.drawImage(superboom, 0, (Math.floor(superframe))*410, 408, 410, REDTANKx+Bulletx-204,Bullety-205, 408, 410);
+            }
+
             else{
-                context.drawImage(bullet, REDTANKx+Bulletx, Bullety/*+Bullety*/);
+                if (super_active){
+                context.drawImage(bullet, REDTANKx+Bulletx-53, Bullety-56);
+                }
+                else{
+                    context.drawImage(bullet, REDTANKx+Bulletx, Bullety/*+Bullety*/);
+                }
             }
         }
 }
     context.drawImage(BLUETANK, 0, (Math.floor(frame))*45, 45, 45, BLUETANKx, BLUETANKy, 45, 45);
     context.drawImage(REDTANK, 0, (Math.floor(frame))*45, 45, 45, REDTANKx, REDTANKy, 45, 45);
     context.restore();
-    
+    console.log(superframe);
+
 }
 
 function animate() {
@@ -133,36 +163,41 @@ function animate() {
     updateMovement();  // Update tank movement
     draw(context);     // Draw the tanks on the canvas
 
+    //console.log("super_active: ", super_active);
+
     // Call animate recursively using requestAnimationFrame for smooth looping
     requestAnimationFrame(animate);
 }
 
 
 function endturn(){
-
-    bulletActive = false;
-    turn++;
-    
-    if (turn > 2){
-        redmeter += (max_steps-red_current_steps)/2
-        if (redmeter>maxmeter){
-            redmeter=102
-        }
-        turn = 1;
-        blue_current_steps = 0;
+    if  (!bulletActive){
+        bulletActive = false;
+        turn++;
         
-    }
-    else {
-        bluemeter += (max_steps-blue_current_steps)/2
-        if (bluemeter>maxmeter){
-            bluemeter=102
+        if (turn > 2){
+            redmeter += (max_steps-red_current_steps)/2
+            if (redmeter>maxmeter){
+                redmeter=102
+                super_active = true;
+            }
+            turn = 1;
+            blue_current_steps = 0;
+            
         }
-        red_current_steps = 0;
-    }
+        else {
+            bluemeter += (max_steps-blue_current_steps)/2
+            if (bluemeter>maxmeter){
+                bluemeter=102
+                super_active = true;
+            }
+            red_current_steps = 0;
+        }
 
-    hasShot = false;
-    hitTank = false;
-    hitNotTank = false;
-    console.log(bluemeter)
-    console.log(turn);
+        hasShot = false;
+        hitTank = false;
+        hitNotTank = false;
+        console.log(bluemeter)
+        console.log(turn);
+    }
 }

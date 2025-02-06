@@ -27,6 +27,9 @@ var time = 0;
 var turn = 1;
 var explosionframe = 0;
 var exploding = false;
+var superframe = 0;
+var superexploding = false;
+var super_active = false;
 
 //aiming / shooting variables
 var mouseX = 0;
@@ -88,6 +91,11 @@ bullet.src = "sprites/cannon_ball.png"
 var boom = new Image();
 boom.src = "sprites/boom.png";
 
+var supernova = new Image();
+supernova.src = "sprites/supernova.png";
+
+var superboom = new Image();
+superboom.src = "sprites/supernova_boom.png";
 
 function stealth(){
     if (bluemeter>101){
@@ -96,6 +104,14 @@ function stealth(){
         ballHeight = 112 
         dmg = (40/TotalHP)*195; // 195 should not be changed
     }
+
+    else if (redmeter>101){
+        bullet.src = "sprites/supernova.png"
+        ballWidth = 106
+        ballHeight = 112 
+        dmg = (40/TotalHP)*195; // 195 should not be changed
+    }
+
     else{
         bullet.src = "sprites/cannon_ball.png";
         ballHeight = 15;
@@ -107,24 +123,26 @@ function stealth(){
 function resetbluemeter(){
     if (bluemeter>101){
         bluemeter=0;
+        super_active = false;
     }
 }
 
 function resetredmeter(){
     if (redmeter>101){
         redmeter = 0;
+        super_active = false;
     }
 }
 
 
 var loaded_images = 0;
-var images = 4;
+var images = 6;
 
 function load_image() {
     loaded_images++;
 
     if (loaded_images == images) {
-        animate();
+        check_animate();
     }
 }
 
@@ -146,4 +164,24 @@ bullet.onload = function(){
 boom.onload = function(){
     load_image();
     console.log("boom loaded");
+}
+
+supernova.onload = function(){
+    load_image();
+    console.log("supernova loaded");
+}
+
+superboom.onload = function(){
+    console.log("superboom loaded");
+    load_image();
+}
+
+var has_animate_loaded = false;
+function check_animate(){
+    if (has_animate_loaded){
+        animate();
+    }
+    else {
+        setTimeout(check_animate, 1);
+    }
 }
