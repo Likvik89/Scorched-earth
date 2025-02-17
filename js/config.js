@@ -30,6 +30,8 @@ var exploding = false;
 var superframe = 0;
 var superexploding = false;
 var super_active = false;
+var secrettank_red = false;
+var secrettank_blue = false;
 
 //aiming / shooting variables
 var mouseX = 0;
@@ -80,10 +82,22 @@ var ballWidth;
 
 
 var REDTANK = new Image();
-REDTANK.src = "sprites/red_tank.png"
+if (Math.random()<0.001){
+    REDTANK.src = "sprites/secrettank_red.png"
+    secrettank_red = true;
+}  
+else {
+    REDTANK.src = "sprites/red_tank.png"
+}
 
 var BLUETANK = new Image();
-BLUETANK.src = "sprites/blue_tank.png";
+if (Math.random()<0.001){
+    BLUETANK.src = "sprites/secrettank_blue.png"
+    secrettank_blue = true;
+}  
+else {
+    BLUETANK.src = "sprites/blue_tank.png";
+}
 
 var bullet = new Image();
 bullet.src = "sprites/cannon_ball.png"
