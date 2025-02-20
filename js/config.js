@@ -111,6 +111,9 @@ supernova.src = "sprites/supernova.png";
 var superboom = new Image();
 superboom.src = "sprites/supernova_boom.png";
 
+var background = new Image();
+background.src = "sprites/Background.png";
+
 function stealth(){
     if (bluemeter>101){
         bullet.src = "sprites/supernova.png"
@@ -150,7 +153,7 @@ function resetredmeter(){
 
 
 var loaded_images = 0;
-var images = 6;
+var images = 7;
 
 function load_image() {
     loaded_images++;
@@ -187,6 +190,11 @@ supernova.onload = function(){
 
 superboom.onload = function(){
     console.log("superboom loaded");
+    load_image();
+}
+
+background.onload = function(){
+    console.log("background loaded");
     load_image();
 }
 

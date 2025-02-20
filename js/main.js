@@ -8,6 +8,8 @@ window.onload=function() {
 
 // Preview for bullet trajectory
 function draw(context) {
+    
+    context.drawImage(background,0,0);
     if (aiming) {
         stealth();
 
